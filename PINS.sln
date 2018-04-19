@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PINS", "PINS\PINS.vbproj", "{CEED1D8E-F46A-4578-9C0B-0CCE15D95B37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEED1D8E-F46A-4578-9C0B-0CCE15D95B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEED1D8E-F46A-4578-9C0B-0CCE15D95B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEED1D8E-F46A-4578-9C0B-0CCE15D95B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEED1D8E-F46A-4578-9C0B-0CCE15D95B37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCAFED90-241F-48BF-B86B-5DBCFD68558A}
+	EndGlobalSection
+EndGlobal
