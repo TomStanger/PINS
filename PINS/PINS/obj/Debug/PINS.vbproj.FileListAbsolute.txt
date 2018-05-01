@@ -1,0 +1,13 @@
+C:\Users\tom.stanger\source\repos\PINS\PINS\bin\Debug\PINS.exe.config
+C:\Users\tom.stanger\source\repos\PINS\PINS\bin\Debug\PINS.exe
+C:\Users\tom.stanger\source\repos\PINS\PINS\bin\Debug\PINS.pdb
+C:\Users\tom.stanger\source\repos\PINS\PINS\bin\Debug\PINS.xml
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.vbprojResolveAssemblyReference.cache
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.Form1.resources
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.Resources.resources
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.vbproj.GenerateResource.Cache
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.vbproj.CoreCompileInputs.cache
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.exe
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.xml
+C:\Users\tom.stanger\source\repos\PINS\PINS\obj\Debug\PINS.pdb
+C:\Users\tom.stanger\source\repos\PINS\PINS\bin\Debug\NCalc.dll
