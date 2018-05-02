@@ -22,9 +22,13 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Options = New System.Windows.Forms.ToolStripMenuItem()
         Me.DecimalPlacesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrinterSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,8 +49,6 @@ Partial Class Form1
         Me.Txt2Pitch = New System.Windows.Forms.TextBox()
         Me.Txt2MPD = New System.Windows.Forms.TextBox()
         Me.LblF2MPD = New System.Windows.Forms.Label()
-        Me.Txt2PCD = New System.Windows.Forms.TextBox()
-        Me.LblF2PCD = New System.Windows.Forms.Label()
         Me.Txt2ASW = New System.Windows.Forms.TextBox()
         Me.F2LblArcSpace = New System.Windows.Forms.Label()
         Me.Txt2PHA = New System.Windows.Forms.TextBox()
@@ -99,8 +101,10 @@ Partial Class Form1
         Me.Fn3LblPA = New System.Windows.Forms.Label()
         Me.CheckHelical = New System.Windows.Forms.CheckBox()
         Me.CheckSpur = New System.Windows.Forms.CheckBox()
-        Me.CheckInternal = New System.Windows.Forms.CheckBox()
-        Me.CheckExternal = New System.Windows.Forms.CheckBox()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
+        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -126,16 +130,35 @@ Partial Class Form1
         '
         'ToolStripMenuItem1
         '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.PrinterSetupToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(44, 20)
         Me.ToolStripMenuItem1.Text = "Print"
+        '
+        'PrintToolStripMenuItem
+        '
+        Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
+        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PrintToolStripMenuItem.Text = "Print"
+        '
+        'PrintPreviewToolStripMenuItem
+        '
+        Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
+        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PrintPreviewToolStripMenuItem.Text = "Print Preview"
+        '
+        'PrinterSetupToolStripMenuItem
+        '
+        Me.PrinterSetupToolStripMenuItem.Name = "PrinterSetupToolStripMenuItem"
+        Me.PrinterSetupToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PrinterSetupToolStripMenuItem.Text = "Printer Setup"
         '
         'MenuStrip2
         '
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1356, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(554, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -216,7 +239,7 @@ Partial Class Form1
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.PINS.My.Resources.Resources.logo1
-        Me.PictureBox1.Location = New System.Drawing.Point(276, 300)
+        Me.PictureBox1.Location = New System.Drawing.Point(279, 300)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(270, 107)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -252,15 +275,13 @@ Partial Class Form1
         Me.PanelFunc2.Controls.Add(Me.Txt2Pitch)
         Me.PanelFunc2.Controls.Add(Me.Txt2MPD)
         Me.PanelFunc2.Controls.Add(Me.LblF2MPD)
-        Me.PanelFunc2.Controls.Add(Me.Txt2PCD)
-        Me.PanelFunc2.Controls.Add(Me.LblF2PCD)
         Me.PanelFunc2.Controls.Add(Me.Txt2ASW)
         Me.PanelFunc2.Controls.Add(Me.F2LblArcSpace)
         Me.PanelFunc2.Controls.Add(Me.Txt2PHA)
         Me.PanelFunc2.Controls.Add(Me.Fn2LblPHA)
         Me.PanelFunc2.Controls.Add(Me.Txt2ToothNo)
         Me.PanelFunc2.Controls.Add(Me.Fn2LblToothno)
-        Me.PanelFunc2.Location = New System.Drawing.Point(562, 460)
+        Me.PanelFunc2.Location = New System.Drawing.Point(562, 246)
         Me.PanelFunc2.Name = "PanelFunc2"
         Me.PanelFunc2.Size = New System.Drawing.Size(255, 222)
         Me.PanelFunc2.TabIndex = 110
@@ -285,7 +306,7 @@ Partial Class Form1
         '
         'Txt2MPD
         '
-        Me.Txt2MPD.Location = New System.Drawing.Point(132, 182)
+        Me.Txt2MPD.Location = New System.Drawing.Point(132, 141)
         Me.Txt2MPD.Name = "Txt2MPD"
         Me.Txt2MPD.Size = New System.Drawing.Size(100, 20)
         Me.Txt2MPD.TabIndex = 9
@@ -293,27 +314,11 @@ Partial Class Form1
         'LblF2MPD
         '
         Me.LblF2MPD.AutoSize = True
-        Me.LblF2MPD.Location = New System.Drawing.Point(7, 185)
+        Me.LblF2MPD.Location = New System.Drawing.Point(7, 144)
         Me.LblF2MPD.Name = "LblF2MPD"
         Me.LblF2MPD.Size = New System.Drawing.Size(119, 13)
         Me.LblF2MPD.TabIndex = 8
         Me.LblF2MPD.Text = "Measuring Pin Diameter"
-        '
-        'Txt2PCD
-        '
-        Me.Txt2PCD.Location = New System.Drawing.Point(132, 146)
-        Me.Txt2PCD.Name = "Txt2PCD"
-        Me.Txt2PCD.Size = New System.Drawing.Size(100, 20)
-        Me.Txt2PCD.TabIndex = 7
-        '
-        'LblF2PCD
-        '
-        Me.LblF2PCD.AutoSize = True
-        Me.LblF2PCD.Location = New System.Drawing.Point(97, 149)
-        Me.LblF2PCD.Name = "LblF2PCD"
-        Me.LblF2PCD.Size = New System.Drawing.Size(29, 13)
-        Me.LblF2PCD.TabIndex = 6
-        Me.LblF2PCD.Text = "PCD"
         '
         'Txt2ASW
         '
@@ -378,7 +383,7 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.RadioFunc3)
         Me.Panel2.Controls.Add(Me.RadioFunc2)
         Me.Panel2.Controls.Add(Me.RadioFunc1)
-        Me.Panel2.Location = New System.Drawing.Point(276, 184)
+        Me.Panel2.Location = New System.Drawing.Point(276, 97)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(270, 108)
         Me.Panel2.TabIndex = 112
@@ -477,7 +482,7 @@ Partial Class Form1
         '
         Me.lblFunctions.AutoSize = True
         Me.lblFunctions.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFunctions.Location = New System.Drawing.Point(276, 165)
+        Me.lblFunctions.Location = New System.Drawing.Point(276, 78)
         Me.lblFunctions.Name = "lblFunctions"
         Me.lblFunctions.Size = New System.Drawing.Size(99, 16)
         Me.lblFunctions.TabIndex = 114
@@ -675,7 +680,7 @@ Partial Class Form1
         Me.PanelFunc3.Controls.Add(Me.Fn3LblPHA)
         Me.PanelFunc3.Controls.Add(Me.Txt3PA)
         Me.PanelFunc3.Controls.Add(Me.Fn3LblPA)
-        Me.PanelFunc3.Location = New System.Drawing.Point(562, 155)
+        Me.PanelFunc3.Location = New System.Drawing.Point(562, 27)
         Me.PanelFunc3.Name = "PanelFunc3"
         Me.PanelFunc3.Size = New System.Drawing.Size(255, 213)
         Me.PanelFunc3.TabIndex = 117
@@ -781,7 +786,7 @@ Partial Class Form1
         'CheckHelical
         '
         Me.CheckHelical.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckHelical.Location = New System.Drawing.Point(424, 83)
+        Me.CheckHelical.Location = New System.Drawing.Point(436, 41)
         Me.CheckHelical.Name = "CheckHelical"
         Me.CheckHelical.Size = New System.Drawing.Size(72, 16)
         Me.CheckHelical.TabIndex = 121
@@ -792,43 +797,35 @@ Partial Class Form1
         Me.CheckSpur.Checked = True
         Me.CheckSpur.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckSpur.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckSpur.Location = New System.Drawing.Point(424, 61)
+        Me.CheckSpur.Location = New System.Drawing.Point(302, 41)
         Me.CheckSpur.Name = "CheckSpur"
         Me.CheckSpur.Size = New System.Drawing.Size(64, 16)
         Me.CheckSpur.TabIndex = 120
         Me.CheckSpur.Text = "Spur"
         '
-        'CheckInternal
+        'PrintPreviewDialog1
         '
-        Me.CheckInternal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckInternal.Location = New System.Drawing.Point(311, 83)
-        Me.CheckInternal.Name = "CheckInternal"
-        Me.CheckInternal.Size = New System.Drawing.Size(72, 16)
-        Me.CheckInternal.TabIndex = 119
-        Me.CheckInternal.Text = "Internal"
+        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog1.Enabled = True
+        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
+        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog1.Visible = False
         '
-        'CheckExternal
+        'PrintDialog1
         '
-        Me.CheckExternal.Checked = True
-        Me.CheckExternal.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckExternal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckExternal.Location = New System.Drawing.Point(311, 61)
-        Me.CheckExternal.Name = "CheckExternal"
-        Me.CheckExternal.Size = New System.Drawing.Size(64, 16)
-        Me.CheckExternal.TabIndex = 118
-        Me.CheckExternal.Text = "External"
+        Me.PrintDialog1.UseEXDialog = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1356, 749)
+        Me.ClientSize = New System.Drawing.Size(554, 413)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)
-        Me.Controls.Add(Me.CheckInternal)
-        Me.Controls.Add(Me.CheckExternal)
         Me.Controls.Add(Me.BtnCalc)
         Me.Controls.Add(Me.lblFunctions)
         Me.Controls.Add(Me.Panel2)
@@ -879,8 +876,6 @@ Partial Class Form1
     Friend WithEvents PanelFunc2 As Panel
     Friend WithEvents Txt2MPD As TextBox
     Friend WithEvents LblF2MPD As Label
-    Friend WithEvents Txt2PCD As TextBox
-    Friend WithEvents LblF2PCD As Label
     Friend WithEvents Txt2ASW As TextBox
     Friend WithEvents F2LblArcSpace As Label
     Friend WithEvents Txt2PHA As TextBox
@@ -918,8 +913,6 @@ Partial Class Form1
     Friend WithEvents ComboThick As ComboBox
     Friend WithEvents CheckHelical As CheckBox
     Friend WithEvents CheckSpur As CheckBox
-    Friend WithEvents CheckInternal As CheckBox
-    Friend WithEvents CheckExternal As CheckBox
     Friend WithEvents Txt4MPD As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Txt4Sop As TextBox
@@ -938,4 +931,11 @@ Partial Class Form1
     Friend WithEvents Lbl4ToothNo As Label
     Friend WithEvents Combo4Pitch As ComboBox
     Friend WithEvents Txt4Pitch As TextBox
+    Friend WithEvents PrintToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintPreviewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrinterSetupToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents PageSetupDialog1 As PageSetupDialog
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
+    Friend WithEvents PrintDialog1 As PrintDialog
 End Class

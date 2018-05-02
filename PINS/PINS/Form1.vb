@@ -11,6 +11,47 @@ Public Class Form1
     Dim DP, inpDP, ToothNo, ThetaR, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
 
+    'Printing
+    Private Sub PrintToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem.Click
+        PrintDocument1.Print()
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.PrintPreviewDialog1 = New PrintPreviewDialog
+
+        'Set the size, location, and name.
+        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog1.Location = New System.Drawing.Point(29, 29)
+        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+
+        ' Set the minimum size the dialog can be resized to.
+        Me.PrintPreviewDialog1.MinimumSize = New System.Drawing.Size(375, 250)
+
+        ' Set the UseAntiAlias property to true, which will allow the 
+        ' operating system to smooth fonts.
+        Me.PrintPreviewDialog1.UseAntiAlias = True
+    End Sub
+
+    Private Sub PrinterSetupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterSetupToolStripMenuItem.Click
+        Try
+            PrintDialog1.Document = PrintDocument1
+            PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
+            PrintDialog1.AllowSomePages = True
+            If PrintDialog1.ShowDialog = DialogResult.OK Then
+                PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
+                PrintDocument1.Print()
+            End If
+        Catch i As Exception
+            MsgBox("An error has occured:" & i.ToString)
+        End Try
+    End Sub
+    Private Sub PrintPreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintPreviewToolStripMenuItem.Click
+        PrintPreviewDialog1.Document = PrintDocument1
+
+        PrintPreviewDialog1.ShowDialog()
+    End Sub
+
 
     'Helical will determine the normal and transverse arcthick and spadewidths
 
@@ -27,7 +68,6 @@ Public Class Form1
         ComboPitch.Items.Add("CDP")
         ComboPitch.Items.Add("NMOD")
         ComboPitch.Items.Add("CMOD")
-
 
         Combo2Pitch.Items.Clear()
         Combo2Pitch.Text = ""
@@ -80,21 +120,21 @@ Public Class Form1
 
     End Sub
 
-    Private Sub CheckInternal_Clicked(sender As Object, e As EventArgs) Handles CheckInternal.Click
-        If CheckInternal.Checked = True Then
-            CheckExternal.Checked = False
-        End If
-        Fn3LblSop.Text = "Dimension under Pins"
-        Fn4LblSop.Text = "Dimension under Pins"
-    End Sub
+    'Private Sub CheckInternal_Clicked(sender As Object, e As EventArgs)
+    '    If CheckInternal.Checked = True Then
+    '        CheckExternal.Checked = False
+    '    End If
+    '    Fn3LblSop.Text = "Dimension under Pins"
+    '    Fn4LblSop.Text = "Dimension under Pins"
+    'End Sub
 
-    Private Sub CheckExternal_Clicked(sender As Object, e As EventArgs) Handles CheckExternal.Click
-        If CheckExternal.Checked = True Then
-            CheckInternal.Checked = False
-        End If
-        Fn3LblSop.Text = "Dimension over Pins"
-        Fn4LblSop.Text = "Dimension over Pins"
-    End Sub
+    'Private Sub CheckExternal_Clicked(sender As Object, e As EventArgs)
+    '    If CheckExternal.Checked = True Then
+    '        CheckInternal.Checked = False
+    '    End If
+    '    Fn3LblSop.Text = "Dimension over Pins"
+    '    Fn4LblSop.Text = "Dimension over Pins"
+    'End Sub
 
     Private Sub RadioFunc4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc4.CheckedChanged
         PanelFunc3.Visible = True
@@ -127,9 +167,9 @@ Public Class Form1
         Txt3PHA.Text = ""
         Txt4PHA.Text = ""
         TxtArcTTh.Text = ""
-        '   TxtPCD.Text = ""
-        Txt2PCD.Text = ""
-        ' Txt3PCD.Text = ""
+        'TxtPCD.Text = ""
+        'Txt2PCD.Text = ""
+        'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
         Txt3PA.Text = ""
@@ -175,10 +215,10 @@ Public Class Form1
         Txt3PHA.Text = ""
         Txt4PHA.Text = ""
         TxtArcTTh.Text = ""
-        '  TxtPCD.Text = ""
-        Txt2PCD.Text = ""
-        '   Txt3PCD.Text = ""
-        ' Txt4PCD.Text = ""
+        'TxtPCD.Text = ""
+        'Txt2PCD.Text = ""
+        'Txt3PCD.Text = ""
+        'Txt4PCD.Text = ""
         TxtPA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
@@ -225,9 +265,9 @@ Public Class Form1
         Txt3PHA.Text = ""
         Txt4PHA.Text = ""
         TxtArcTTh.Text = ""
-        ' TxtPCD.Text = ""
-        Txt2PCD.Text = ""
-        '  Txt3PCD.Text = ""
+        'TxtPCD.Text = ""
+        'Txt2PCD.Text = ""
+        'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
         Txt3PA.Text = ""
@@ -275,10 +315,10 @@ Public Class Form1
         Txt3PHA.Text = ""
         Txt4PHA.Text = ""
         TxtArcTTh.Text = ""
-        '  TxtPCD.Text = ""
-        Txt2PCD.Text = ""
-        '  Txt3PCD.Text = ""
-        '  Txt4PCD.Text = ""
+        'TxtPCD.Text = ""
+        'Txt2PCD.Text = ""
+        'Txt3PCD.Text = ""
+        'Txt4PCD.Text = ""
         TxtPA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
@@ -303,7 +343,7 @@ Public Class Form1
             Opft()
         ElseIf RadioFunc2.Checked = True Then
 
-
+            Upfs()
             'Do 2nd func
         ElseIf RadioFunc3.Checked = True Then
 
@@ -317,18 +357,21 @@ Public Class Form1
             MsgBox("Please select a function")
         End If
     End Sub
+    Sub Upfs()
+
+    End Sub
+
     Sub Opft()
         Rad = 180 / PI
         MPD1 = inpMPD
-        ' MsgBox("Normal component")
+
         PAr = PA / Rad
         PHAr = PHA / 180 * PI
         Beta = PHAr
         Beta = Beta / Rad
         PCD = ToothNo / Pitch
         '  MsgBox(PCD)
-        'LOG IS A WAY TO CHECK IF NORMAL OF TRANSVERSE
-        'Is Log transverse check?
+
         If ComboThick.SelectedItem = "Transverse Arc Thickness" Then
             ' TranTTh = PA = Atan(Tan(PA) / Cos(Beta))
             TranTTh = inpArcTTh
@@ -504,12 +547,12 @@ Public Class Form1
         inpMPD = Val(Txt2MPD.Text)
     End Sub
 
-    Private Sub Txt2PCD_LostFocus(sender As Object, e As EventArgs) Handles Txt2PCD.LostFocus
-        Input(Txt2PCD.Text)
-        PCD = Val(Txt2PCD.Text)
+    'Private Sub Txt2PCD_LostFocus(sender As Object, e As EventArgs)
+    '    Input(Txt2PCD.Text)
+    '    PCD = Val(Txt2PCD.Text)
 
-        inpPCD = Val(Txt2PCD.Text)
-    End Sub
+    '    inpPCD = Val(Txt2PCD.Text)
+    'End Sub
 
     Private Sub Txt2ASW_LostFocus(sender As Object, e As EventArgs) Handles Txt2ASW.LostFocus
         Input(Txt2ASW.Text)
