@@ -158,7 +158,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(554, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(552, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -184,8 +184,8 @@ Partial Class Form1
         'Units
         '
         Me.Units.Name = "Units"
-        Me.Units.Size = New System.Drawing.Size(136, 20)
-        Me.Units.Text = "All Dimensions in mm"
+        Me.Units.Size = New System.Drawing.Size(53, 20)
+        Me.Units.Text = "Inches"
         '
         'Lbltoothno
         '
@@ -822,7 +822,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(554, 413)
+        Me.ClientSize = New System.Drawing.Size(552, 411)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)

@@ -8,8 +8,30 @@ Imports NCalc.Expression
 Public Class Form1
     Dim Deci As Integer
     Dim Comp, UPC As String
-    Dim DP, inpDP, ToothNo, ThetaR, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
+    Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
+    Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
+        If Convert = 25.4 Then
+            Units.Text = "Inches"
+            convert = 1
+        Else
+            Units.Text = "MM"
+            convert = 25.4
+        End If
+        ChangeDisplay()
+    End Sub
+
+    Sub ChangeDisplay()
+        TxtArcTTh.Text = (inpArcTTh * convert)
+        Txt2ASW.Text = (inpASW * convert)
+        Txt3Sop.Text = (inpDoP * convert)
+        Txt4Sop.Text = (inpDoP * convert)
+
+        TxtMPD.Text = (inpMPD * convert)
+        Txt2MPD.Text = (inpMPD * convert)
+        Txt3MPD.Text = (inpMPD * convert)
+        Txt4MPD.Text = (inpMPD * convert)
+    End Sub
 
     'Printing
     Private Sub PrintToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem.Click
@@ -18,6 +40,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        convert = 1
         Me.PrintPreviewDialog1 = New PrintPreviewDialog
 
         'Set the size, location, and name.
@@ -157,6 +180,12 @@ Public Class Form1
         inpPCD = 0
         inpPA = 0
         inpMPD = 0
+        DP = 0
+        Pitch = 0
+        TxtPitch.Text = ""
+        Txt2Pitch.Text = ""
+        Txt3Pitch.Text = ""
+        Txt4Pitch.Text = ""
         TxtDoe.Text = ""
         TxtRt.Text = ""
         TxtTheta.Text = ""
@@ -205,6 +234,12 @@ Public Class Form1
         inpPA = 0
         inpMPD = 0
         ASW = 0
+        DP = 0
+        Pitch = 0
+        TxtPitch.Text = ""
+        Txt2Pitch.Text = ""
+        Txt3Pitch.Text = ""
+        Txt4Pitch.Text = ""
         TxtDoe.Text = ""
         TxtRt.Text = ""
         TxtTheta.Text = ""
@@ -249,6 +284,12 @@ Public Class Form1
         ASW = 0
         PA = 0
         MPD = 0
+        DP = 0
+        Pitch = 0
+        TxtPitch.Text = ""
+        Txt2Pitch.Text = ""
+        Txt3Pitch.Text = ""
+        Txt4Pitch.Text = ""
         inpToothNo = 0
         inpPHA = 0
         inpArcTTh = 0
@@ -299,6 +340,12 @@ Public Class Form1
         PA = 0
         MPD = 0
         ASW = 0
+        DP = 0
+        Pitch = 0
+        TxtPitch.Text = ""
+        Txt2Pitch.Text = ""
+        Txt3Pitch.Text = ""
+        Txt4Pitch.Text = ""
         inpToothNo = 0
         inpPHA = 0
         inpArcTTh = 0
@@ -358,6 +405,9 @@ Public Class Form1
         End If
     End Sub
     Sub Upfs()
+        Rad = 180 / PI
+        PAr = PA / Rad
+
 
     End Sub
 
@@ -370,7 +420,7 @@ Public Class Form1
         Beta = PHAr
         Beta = Beta / Rad
         PCD = ToothNo / Pitch
-        '  MsgBox(PCD)
+        MsgBox(PCD)
 
         If ComboThick.SelectedItem = "Transverse Arc Thickness" Then
             ' TranTTh = PA = Atan(Tan(PA) / Cos(Beta))
@@ -390,7 +440,7 @@ Public Class Form1
         BCD = PCD * Cos(PAr)
 
         Vol = TranTTh / PCD + MPD / BCD + (Tan(PAr) - PAr) - PI / ToothNo
-        '   MsgBox(Vol)
+        MsgBox("Vol = " & Vol)
         Alpha = Ainv(Vol)
         Twoc = BCD / Cos(Alpha)
         Eo = ToothNo Mod 2
@@ -470,13 +520,13 @@ Public Class Form1
         Input(TxtArcTTh.Text)
         ArcTTh = Val(TxtArcTTh.Text)
 
-        inpArcTTh = Val(TxtArcTTh.Text)
+        inpArcTTh = Val(TxtArcTTh.Text) / convert
     End Sub
 
     'Private Sub TxtPCD_LostFocus(sender As Object, e As EventArgs)
     '    Input(TxtPCD.Text)
     '    PCD = Val(TxtPCD.Text)
-    '    inpPCD = Val(TxtPCD.Text)
+    '    inpPCD = Val(TxtPCD.Text)/ convert
     'End Sub
     Private Sub TxtPA_LostFocus(sender As Object, e As EventArgs) Handles TxtPA.LostFocus
         Input(TxtPA.Text)
@@ -487,7 +537,7 @@ Public Class Form1
     Private Sub TxtMPD_LostFocus(sender As Object, e As EventArgs) Handles TxtMPD.LostFocus
         Input(TxtMPD.Text)
         MPD = Val(TxtMPD.Text)
-        inpMPD = Val(TxtMPD.Text)
+        inpMPD = Val(TxtMPD.Text) / convert
     End Sub
     Private Sub TxtPitch_LostFocus(sender As Object, e As EventArgs) Handles TxtPitch.LostFocus
         Input(TxtPitch.Text)
@@ -544,7 +594,7 @@ Public Class Form1
         Input(Txt2MPD.Text)
         MPD = Val(Txt2MPD.Text)
 
-        inpMPD = Val(Txt2MPD.Text)
+        inpMPD = Val(Txt2MPD.Text) / convert
     End Sub
 
     'Private Sub Txt2PCD_LostFocus(sender As Object, e As EventArgs)
@@ -558,7 +608,7 @@ Public Class Form1
         Input(Txt2ASW.Text)
         ASW = Val(Txt2ASW.Text)
 
-        inpASW = Val(Txt2ASW.Text)
+        inpASW = Val(Txt2ASW.Text) / convert
     End Sub
 
     Private Sub Txt2PHA_LostFocus(sender As Object, e As EventArgs) Handles Txt2PHA.LostFocus
@@ -606,7 +656,7 @@ Public Class Form1
         Input(Txt3MPD.Text)
         MPD = Val(Txt3MPD.Text)
 
-        inpMPD = Val(Txt3MPD.Text)
+        inpMPD = Val(Txt3MPD.Text) / convert
     End Sub
 
     'Private Sub Txt3PCD_LostFocus(sender As Object, e As EventArgs)
@@ -620,7 +670,7 @@ Public Class Form1
         Input(Txt3Sop.Text)
         DoP = Val(Txt3Sop.Text)
 
-        inpDoP = Val(Txt3Sop.Text)
+        inpDoP = Val(Txt3Sop.Text) / convert
     End Sub
 
     Private Sub Txt3PHA_LostFocus(sender As Object, e As EventArgs) Handles Txt3PHA.LostFocus
@@ -670,7 +720,7 @@ Public Class Form1
         Input(Txt4MPD.Text)
         MPD = Val(Txt4MPD.Text)
 
-        inpMPD = Val(Txt4MPD.Text)
+        inpMPD = Val(Txt4MPD.Text) / convert
     End Sub
 
     'Private Sub Txt4PCD_LostFocus(sender As Object, e As EventArgs)
@@ -684,7 +734,7 @@ Public Class Form1
         Input(Txt4Sop.Text)
         DoP = Val(Txt4Sop.Text)
 
-        inpDoP = Val(Txt4Sop.Text)
+        inpDoP = Val(Txt4Sop.Text) / convert
     End Sub
 
     Private Sub Txt4PHA_LostFocus(sender As Object, e As EventArgs) Handles Txt4PHA.LostFocus
