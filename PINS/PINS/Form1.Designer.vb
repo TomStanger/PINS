@@ -36,7 +36,6 @@ Partial Class Form1
         Me.Units = New System.Windows.Forms.ToolStripMenuItem()
         Me.Lbltoothno = New System.Windows.Forms.Label()
         Me.TxtToothNo = New System.Windows.Forms.TextBox()
-        Me.LblPA = New System.Windows.Forms.Label()
         Me.TxtPA = New System.Windows.Forms.TextBox()
         Me.ComboPitch = New System.Windows.Forms.ComboBox()
         Me.TxtPitch = New System.Windows.Forms.TextBox()
@@ -105,6 +104,7 @@ Partial Class Form1
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.ComboPA = New System.Windows.Forms.ComboBox()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -158,7 +158,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(552, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(549, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -202,15 +202,6 @@ Partial Class Form1
         Me.TxtToothNo.Name = "TxtToothNo"
         Me.TxtToothNo.Size = New System.Drawing.Size(65, 20)
         Me.TxtToothNo.TabIndex = 98
-        '
-        'LblPA
-        '
-        Me.LblPA.AutoSize = True
-        Me.LblPA.Location = New System.Drawing.Point(69, 48)
-        Me.LblPA.Name = "LblPA"
-        Me.LblPA.Size = New System.Drawing.Size(81, 13)
-        Me.LblPA.TabIndex = 99
-        Me.LblPA.Text = "Pressure Angle:"
         '
         'TxtPA
         '
@@ -372,7 +363,7 @@ Partial Class Form1
         '
         Me.BtnCalc.Location = New System.Drawing.Point(12, 271)
         Me.BtnCalc.Name = "BtnCalc"
-        Me.BtnCalc.Size = New System.Drawing.Size(250, 43)
+        Me.BtnCalc.Size = New System.Drawing.Size(258, 43)
         Me.BtnCalc.TabIndex = 111
         Me.BtnCalc.Text = "Calculate"
         Me.BtnCalc.UseVisualStyleBackColor = True
@@ -434,12 +425,12 @@ Partial Class Form1
         '
         'PanelFunc1
         '
+        Me.PanelFunc1.Controls.Add(Me.ComboPA)
         Me.PanelFunc1.Controls.Add(Me.ComboThick)
         Me.PanelFunc1.Controls.Add(Me.TxtPHA)
         Me.PanelFunc1.Controls.Add(Me.LblPitchHA)
         Me.PanelFunc1.Controls.Add(Me.TxtToothNo)
         Me.PanelFunc1.Controls.Add(Me.Lbltoothno)
-        Me.PanelFunc1.Controls.Add(Me.LblPA)
         Me.PanelFunc1.Controls.Add(Me.TxtPA)
         Me.PanelFunc1.Controls.Add(Me.LblMPD)
         Me.PanelFunc1.Controls.Add(Me.ComboPitch)
@@ -817,12 +808,22 @@ Partial Class Form1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'ComboPA
+        '
+        Me.ComboPA.FormattingEnabled = True
+        Me.ComboPA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.ComboPA.Location = New System.Drawing.Point(48, 46)
+        Me.ComboPA.Name = "ComboPA"
+        Me.ComboPA.Size = New System.Drawing.Size(102, 21)
+        Me.ComboPA.TabIndex = 114
+        Me.ComboPA.Text = "NPA"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(552, 411)
+        Me.ClientSize = New System.Drawing.Size(549, 410)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)
@@ -836,7 +837,7 @@ Partial Class Form1
         Me.Controls.Add(Me.PanelFunc4)
         Me.Controls.Add(Me.PanelFunc1)
         Me.Name = "Form1"
-        Me.Text = "Tooth Thickness"
+        Me.Text = "Functions 1 - 4"
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -865,7 +866,6 @@ Partial Class Form1
     Friend WithEvents Units As ToolStripMenuItem
     Friend WithEvents Lbltoothno As Label
     Friend WithEvents TxtToothNo As TextBox
-    Friend WithEvents LblPA As Label
     Friend WithEvents TxtPA As TextBox
     Friend WithEvents ComboPitch As ComboBox
     Friend WithEvents TxtPitch As TextBox
@@ -938,4 +938,5 @@ Partial Class Form1
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents ComboPA As ComboBox
 End Class

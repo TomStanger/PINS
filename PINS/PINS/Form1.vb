@@ -8,10 +8,14 @@ Imports NCalc.Expression
 Public Class Form1
     Dim Deci As Integer
     Dim Comp, UPC As String
-    Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
+    Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
+
+    Private Sub ComboPA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboPA.SelectedIndexChanged
+
+    End Sub
 
     Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
-        If Convert = 25.4 Then
+        If convert = 25.4 Then
             Units.Text = "Inches"
             convert = 1
         Else
@@ -273,7 +277,7 @@ Public Class Form1
         PanelFunc2.Location = New Point(12, 41)
         PanelFunc1.Visible = False
         TxtPA.Visible = False
-        LblPA.Visible = False
+        ComboPA.Visible = False
         Doe = 0
         Rt = 0
         Theta = 0
@@ -329,7 +333,7 @@ Public Class Form1
         PanelFunc1.Visible = True
 
         TxtPA.Visible = True
-        LblPA.Visible = True
+        ComboPA.Visible = True
         Doe = 0
         Rt = 0
         Theta = 0
@@ -407,7 +411,9 @@ Public Class Form1
     Sub Upfs()
         Rad = 180 / PI
         PAr = PA / Rad
-
+        H = 0
+        MPD1 = MPD
+        BetaR = Beta / Rad
 
     End Sub
 
@@ -417,10 +423,19 @@ Public Class Form1
 
         PAr = PA / Rad
         PHAr = PHA / 180 * PI
+        'SHOULD THAT BE PHAr or InpPHA?
         Beta = PHAr
-        Beta = Beta / Rad
+        BetaR = Beta / Rad
         PCD = ToothNo / Pitch
         MsgBox(PCD)
+
+
+        If ComboPA.SelectedItem = "NPA" Then
+            PA = inpPA
+        ElseIf ComboPA.SelectedItem = "CPA" Then
+            PA = Atan(Tan(inpPA) / Cos(BetaR))
+            MsgBox(PA)
+        End If
 
         If ComboThick.SelectedItem = "Transverse Arc Thickness" Then
             ' TranTTh = PA = Atan(Tan(PA) / Cos(Beta))
