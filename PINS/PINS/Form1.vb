@@ -10,6 +10,10 @@ Public Class Form1
     Dim Comp, UPC As String
     Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
+    Private Sub Txt2Pitch_TextChanged(sender As Object, e As EventArgs) Handles Txt2Pitch.TextChanged
+
+    End Sub
+
     Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
         If convert = 25.4 Then
             Units.Text = "Inches"
@@ -334,6 +338,7 @@ Public Class Form1
     End Sub
 
     Private Sub RadioFunc1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc1.CheckedChanged
+        MsgBox("Checking changed")
         PanelFunc3.Visible = False
         PanelFunc4.Visible = False
         PanelFunc2.Visible = False
@@ -420,9 +425,15 @@ Public Class Form1
     Sub Upfs()
         Rad = 180 / PI
         PAr = PA / Rad
+        PHAr = PHA / 180 * PI
+        'SHOULD THAT BE PHAr or InpPHA?
+        Beta = PHAr
         H = 0
         MPD1 = MPD
         BetaR = Beta / Rad
+        PCD = ToothNo / Pitch
+        ' MsgBox(Pitch)
+        ' MsgBox(inpDP)
         If Beta > 0.000001 Then
 
             H = Atan(Tan(Beta) * Cos(PA))
@@ -430,8 +441,22 @@ Public Class Form1
             MPD = inpMPD / Cos(H)
         End If
 
+        If Combo2ASW.SelectedItem = "Normal Arc Spacewidth" Then
+            ASW = inpASW
+        ElseIf Combo2ASW.SelectedItem = "Transverse Arc Spacewidth" Then
+            ASW = inpASW / Cos(Beta)
+        End If
+
+        If Combo2PA.SelectedItem = "NPA" Then
+            PA = inpPA
+        ElseIf Combo2PA.SelectedItem = "CPA" Then
+            PA = Atan(Tan(inpPA) / Cos(BetaR))
+            MsgBox(PA)
+        End If
+
+
         BCD = PCD * Cos(PAr)
-        Vol = ASW / PCD + (Tan(PA) - PA) - MPD / BCD
+        Vol = ASW / PCD + (Tan(PAr) - PAr) - MPD / BCD
         Alpha = Ainv(Vol)
         Twoc = BCD / Cos(Alpha)
 
@@ -444,6 +469,7 @@ Public Class Form1
         End If
         Theta = Atan(Tan(Alpha) + MPD1 * Cos(H) / BCD)
         Rt = BCD / (2 * Cos(Theta))
+        ThetaR = Theta * 180 / PI
 
         TxtTheta.Text = ThetaR
         TxtRt.Text = Rt
@@ -468,7 +494,7 @@ Public Class Form1
             PA = inpPA
         ElseIf ComboPA.SelectedItem = "CPA" Then
             PA = Atan(Tan(inpPA) / Cos(BetaR))
-            MsgBox(PA)
+
         End If
 
         If ComboThick.SelectedItem = "Transverse Arc Thickness" Then
@@ -489,7 +515,7 @@ Public Class Form1
         BCD = PCD * Cos(PAr)
 
         Vol = TranTTh / PCD + MPD / BCD + (Tan(PAr) - PAr) - PI / ToothNo
-        MsgBox("Vol = " & Vol)
+        '  MsgBox("Vol = " & Vol)
         Alpha = Ainv(Vol)
         Twoc = BCD / Cos(Alpha)
         Eo = ToothNo Mod 2
@@ -595,10 +621,10 @@ Public Class Form1
         Dim CDP As Double
         If ComboPitch.SelectedItem = "Diametral Pitch" Then
             inpDP = DP
-
+            Pitch = DP
         ElseIf ComboPitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
-            MsgBox(DP)
+            '  MsgBox(DP)
             Pitch = DP
         ElseIf ComboPitch.SelectedItem = "NMOD" Then
             DP = 25.4 / inpDP
@@ -611,17 +637,36 @@ Public Class Form1
             DP = CDP / Cos(PHA)
             Pitch = DP
         End If
+
+        If Combo2Pitch.SelectedItem = "Diametral Pitch" Then
+            inpDP = DP
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "Module" Then
+            DP = 25.4 / inpDP
+            '  MsgBox(DP)
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "NMOD" Then
+            DP = 25.4 / inpDP
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "CDP" Then
+            DP = inpDP / Cos(PHA)
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "CMOD" Then
+            CDP = 25.4 / inpDP
+            DP = CDP / Cos(PHA)
+            Pitch = DP
+        End If
     End Sub
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     'FUNCTION 2 INPUTS
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Private Sub Txt2Pitch_LostFocus(sender As Object, e As EventArgs) Handles TxtPitch.LostFocus
-        Input(TxtPitch.Text)
-        DP = Val(TxtPitch.Text)
-        inpDP = Val(TxtPitch.Text)
+    Private Sub Txt2Pitch_LostFocus(sender As Object, e As EventArgs) Handles Txt2Pitch.LostFocus
+        Input(Txt2Pitch.Text)
+        DP = Val(Txt2Pitch.Text)
+        inpDP = Val(Txt2Pitch.Text)
         Dim CDP As Double
         If Combo2Pitch.SelectedItem = "Diametral Pitch" Then
-            inpDP = DP
+            inpDP = Val(Txt2Pitch.Text)
             Pitch = DP
         ElseIf Combo2Pitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
@@ -644,6 +689,13 @@ Public Class Form1
         MPD = Val(Txt2MPD.Text)
 
         inpMPD = Val(Txt2MPD.Text) / convert
+    End Sub
+
+    Private Sub Txt2PA_LostFocus(sender As Object, e As EventArgs) Handles Txt2PA.LostFocus
+        Input(Txt2PA.Text)
+        PA = Val(Txt2PA.Text)
+
+        inpPA = Val(Txt2PA.Text)
     End Sub
 
     'Private Sub Txt2PCD_LostFocus(sender As Object, e As EventArgs)
@@ -677,7 +729,7 @@ Public Class Form1
     'FUNCTION 3 INPUTS
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    Private Sub Txt3Pitch_LostFocus(sender As Object, e As EventArgs) Handles TxtPitch.LostFocus
+    Private Sub Txt3Pitch_LostFocus(sender As Object, e As EventArgs) Handles Txt3Pitch.LostFocus
         Input(TxtPitch.Text)
         DP = Val(TxtPitch.Text)
         inpDP = Val(TxtPitch.Text)
@@ -740,7 +792,7 @@ Public Class Form1
     'FUNCTION 4 INPUTS
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    Private Sub Txt4Pitch_LostFocus(sender As Object, e As EventArgs) Handles TxtPitch.LostFocus
+    Private Sub Txt4Pitch_LostFocus(sender As Object, e As EventArgs) Handles Txt4Pitch.LostFocus
         Input(TxtPitch.Text)
         DP = Val(TxtPitch.Text)
         inpDP = Val(TxtPitch.Text)

@@ -44,6 +44,7 @@ Partial Class Form1
         Me.TxtMPD = New System.Windows.Forms.TextBox()
         Me.LblMPD = New System.Windows.Forms.Label()
         Me.PanelFunc2 = New System.Windows.Forms.Panel()
+        Me.Combo2ASW = New System.Windows.Forms.ComboBox()
         Me.Combo2Pitch = New System.Windows.Forms.ComboBox()
         Me.Txt2Pitch = New System.Windows.Forms.TextBox()
         Me.Txt2MPD = New System.Windows.Forms.TextBox()
@@ -104,7 +105,8 @@ Partial Class Form1
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.Combo2ASW = New System.Windows.Forms.ComboBox()
+        Me.Combo2PA = New System.Windows.Forms.ComboBox()
+        Me.Txt2PA = New System.Windows.Forms.TextBox()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -262,6 +264,8 @@ Partial Class Form1
         '
         'PanelFunc2
         '
+        Me.PanelFunc2.Controls.Add(Me.Txt2PA)
+        Me.PanelFunc2.Controls.Add(Me.Combo2PA)
         Me.PanelFunc2.Controls.Add(Me.Combo2ASW)
         Me.PanelFunc2.Controls.Add(Me.Combo2Pitch)
         Me.PanelFunc2.Controls.Add(Me.Txt2Pitch)
@@ -277,6 +281,16 @@ Partial Class Form1
         Me.PanelFunc2.Size = New System.Drawing.Size(255, 222)
         Me.PanelFunc2.TabIndex = 110
         Me.PanelFunc2.Visible = False
+        '
+        'Combo2ASW
+        '
+        Me.Combo2ASW.FormattingEnabled = True
+        Me.Combo2ASW.Items.AddRange(New Object() {"Normal Arc Spacewidth", "Transverse Arc Spacewidth"})
+        Me.Combo2ASW.Location = New System.Drawing.Point(3, 110)
+        Me.Combo2ASW.Name = "Combo2ASW"
+        Me.Combo2ASW.Size = New System.Drawing.Size(137, 21)
+        Me.Combo2ASW.TabIndex = 123
+        Me.Combo2ASW.Text = "Normal Arc Spacewidth"
         '
         'Combo2Pitch
         '
@@ -811,15 +825,22 @@ Partial Class Form1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'Combo2ASW
+        'Combo2PA
         '
-        Me.Combo2ASW.FormattingEnabled = True
-        Me.Combo2ASW.Items.AddRange(New Object() {"Normal Arc Spacewidth", "Transverse Arc Spacewidth"})
-        Me.Combo2ASW.Location = New System.Drawing.Point(3, 110)
-        Me.Combo2ASW.Name = "Combo2ASW"
-        Me.Combo2ASW.Size = New System.Drawing.Size(137, 21)
-        Me.Combo2ASW.TabIndex = 123
-        Me.Combo2ASW.Text = "Normal Arc Spacewidth"
+        Me.Combo2PA.FormattingEnabled = True
+        Me.Combo2PA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.Combo2PA.Location = New System.Drawing.Point(24, 172)
+        Me.Combo2PA.Name = "Combo2PA"
+        Me.Combo2PA.Size = New System.Drawing.Size(102, 21)
+        Me.Combo2PA.TabIndex = 126
+        Me.Combo2PA.Text = "NPA"
+        '
+        'Txt2PA
+        '
+        Me.Txt2PA.Location = New System.Drawing.Point(143, 173)
+        Me.Txt2PA.Name = "Txt2PA"
+        Me.Txt2PA.Size = New System.Drawing.Size(100, 20)
+        Me.Txt2PA.TabIndex = 115
         '
         'Form1
         '
@@ -942,4 +963,6 @@ Partial Class Form1
     Friend WithEvents Combo4PA As ComboBox
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Combo2ASW As ComboBox
+    Friend WithEvents Txt2PA As TextBox
+    Friend WithEvents Combo2PA As ComboBox
 End Class
