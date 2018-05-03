@@ -10,10 +10,6 @@ Public Class Form1
     Dim Comp, UPC As String
     Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
-    Private Sub ComboPA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboPA.SelectedIndexChanged
-
-    End Sub
-
     Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
         If convert = 25.4 Then
             Units.Text = "Inches"
@@ -185,6 +181,9 @@ Public Class Form1
         inpPA = 0
         inpMPD = 0
         DP = 0
+        Alpha = 0
+        Vol = 0
+        AlphaR = 0
         Pitch = 0
         TxtPitch.Text = ""
         Txt2Pitch.Text = ""
@@ -240,6 +239,9 @@ Public Class Form1
         ASW = 0
         DP = 0
         Pitch = 0
+        Alpha = 0
+        Vol = 0
+        AlphaR = 0
         TxtPitch.Text = ""
         Txt2Pitch.Text = ""
         Txt3Pitch.Text = ""
@@ -268,6 +270,7 @@ Public Class Form1
 
 
 
+
     End Sub
 
     Private Sub RadioFunc2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc2.CheckedChanged
@@ -278,6 +281,7 @@ Public Class Form1
         PanelFunc1.Visible = False
         TxtPA.Visible = False
         ComboPA.Visible = False
+
         Doe = 0
         Rt = 0
         Theta = 0
@@ -290,6 +294,9 @@ Public Class Form1
         MPD = 0
         DP = 0
         Pitch = 0
+        Alpha = 0
+        Vol = 0
+        AlphaR = 0
         TxtPitch.Text = ""
         Txt2Pitch.Text = ""
         Txt3Pitch.Text = ""
@@ -334,6 +341,8 @@ Public Class Form1
 
         TxtPA.Visible = True
         ComboPA.Visible = True
+
+
         Doe = 0
         Rt = 0
         Theta = 0
@@ -414,6 +423,31 @@ Public Class Form1
         H = 0
         MPD1 = MPD
         BetaR = Beta / Rad
+        If Beta > 0.000001 Then
+
+            H = Atan(Tan(Beta) * Cos(PA))
+
+            MPD = inpMPD / Cos(H)
+        End If
+
+        BCD = PCD * Cos(PAr)
+        Vol = ASW / PCD + (Tan(PA) - PA) - MPD / BCD
+        Alpha = Ainv(Vol)
+        Twoc = BCD / Cos(Alpha)
+
+        Eo = ToothNo Mod 2
+
+        If Eo > 0.1 Then
+            Doe = Twoc * Cos(90 / ToothNo / Rad) + MPD1
+        Else
+            Doe = Twoc - MPD1
+        End If
+        Theta = Atan(Tan(Alpha) + MPD1 * Cos(H) / BCD)
+        Rt = BCD / (2 * Cos(Theta))
+
+        TxtTheta.Text = ThetaR
+        TxtRt.Text = Rt
+        TxtDoe.Text = Doe
 
     End Sub
 
@@ -427,7 +461,7 @@ Public Class Form1
         Beta = PHAr
         BetaR = Beta / Rad
         PCD = ToothNo / Pitch
-        MsgBox(PCD)
+        'MsgBox(PCD)
 
 
         If ComboPA.SelectedItem = "NPA" Then

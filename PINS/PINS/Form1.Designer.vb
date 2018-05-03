@@ -49,7 +49,6 @@ Partial Class Form1
         Me.Txt2MPD = New System.Windows.Forms.TextBox()
         Me.LblF2MPD = New System.Windows.Forms.Label()
         Me.Txt2ASW = New System.Windows.Forms.TextBox()
-        Me.F2LblArcSpace = New System.Windows.Forms.Label()
         Me.Txt2PHA = New System.Windows.Forms.TextBox()
         Me.Fn2LblPHA = New System.Windows.Forms.Label()
         Me.Txt2ToothNo = New System.Windows.Forms.TextBox()
@@ -61,6 +60,7 @@ Partial Class Form1
         Me.RadioFunc2 = New System.Windows.Forms.RadioButton()
         Me.RadioFunc1 = New System.Windows.Forms.RadioButton()
         Me.PanelFunc1 = New System.Windows.Forms.Panel()
+        Me.ComboPA = New System.Windows.Forms.ComboBox()
         Me.ComboThick = New System.Windows.Forms.ComboBox()
         Me.TxtPHA = New System.Windows.Forms.TextBox()
         Me.LblPitchHA = New System.Windows.Forms.Label()
@@ -73,6 +73,7 @@ Partial Class Form1
         Me.TxtDoe = New System.Windows.Forms.TextBox()
         Me.LblDoe = New System.Windows.Forms.Label()
         Me.PanelFunc4 = New System.Windows.Forms.Panel()
+        Me.Combo4PA = New System.Windows.Forms.ComboBox()
         Me.Txt4ToothNo = New System.Windows.Forms.TextBox()
         Me.Lbl4ToothNo = New System.Windows.Forms.Label()
         Me.Combo4Pitch = New System.Windows.Forms.ComboBox()
@@ -84,8 +85,8 @@ Partial Class Form1
         Me.Txt4PHA = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt4PA = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.PanelFunc3 = New System.Windows.Forms.Panel()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Txt3ToothNo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboFn3Pitch = New System.Windows.Forms.ComboBox()
@@ -97,14 +98,13 @@ Partial Class Form1
         Me.Txt3PHA = New System.Windows.Forms.TextBox()
         Me.Fn3LblPHA = New System.Windows.Forms.Label()
         Me.Txt3PA = New System.Windows.Forms.TextBox()
-        Me.Fn3LblPA = New System.Windows.Forms.Label()
         Me.CheckHelical = New System.Windows.Forms.CheckBox()
         Me.CheckSpur = New System.Windows.Forms.CheckBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.ComboPA = New System.Windows.Forms.ComboBox()
+        Me.Combo2ASW = New System.Windows.Forms.ComboBox()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -158,7 +158,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(549, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(1331, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -262,12 +262,12 @@ Partial Class Form1
         '
         'PanelFunc2
         '
+        Me.PanelFunc2.Controls.Add(Me.Combo2ASW)
         Me.PanelFunc2.Controls.Add(Me.Combo2Pitch)
         Me.PanelFunc2.Controls.Add(Me.Txt2Pitch)
         Me.PanelFunc2.Controls.Add(Me.Txt2MPD)
         Me.PanelFunc2.Controls.Add(Me.LblF2MPD)
         Me.PanelFunc2.Controls.Add(Me.Txt2ASW)
-        Me.PanelFunc2.Controls.Add(Me.F2LblArcSpace)
         Me.PanelFunc2.Controls.Add(Me.Txt2PHA)
         Me.PanelFunc2.Controls.Add(Me.Fn2LblPHA)
         Me.PanelFunc2.Controls.Add(Me.Txt2ToothNo)
@@ -290,14 +290,14 @@ Partial Class Form1
         '
         'Txt2Pitch
         '
-        Me.Txt2Pitch.Location = New System.Drawing.Point(132, 3)
+        Me.Txt2Pitch.Location = New System.Drawing.Point(143, 2)
         Me.Txt2Pitch.Name = "Txt2Pitch"
         Me.Txt2Pitch.Size = New System.Drawing.Size(100, 20)
         Me.Txt2Pitch.TabIndex = 125
         '
         'Txt2MPD
         '
-        Me.Txt2MPD.Location = New System.Drawing.Point(132, 141)
+        Me.Txt2MPD.Location = New System.Drawing.Point(143, 140)
         Me.Txt2MPD.Name = "Txt2MPD"
         Me.Txt2MPD.Size = New System.Drawing.Size(100, 20)
         Me.Txt2MPD.TabIndex = 9
@@ -313,23 +313,14 @@ Partial Class Form1
         '
         'Txt2ASW
         '
-        Me.Txt2ASW.Location = New System.Drawing.Point(132, 110)
+        Me.Txt2ASW.Location = New System.Drawing.Point(143, 109)
         Me.Txt2ASW.Name = "Txt2ASW"
         Me.Txt2ASW.Size = New System.Drawing.Size(100, 20)
         Me.Txt2ASW.TabIndex = 5
         '
-        'F2LblArcSpace
-        '
-        Me.F2LblArcSpace.AutoSize = True
-        Me.F2LblArcSpace.Location = New System.Drawing.Point(41, 113)
-        Me.F2LblArcSpace.Name = "F2LblArcSpace"
-        Me.F2LblArcSpace.Size = New System.Drawing.Size(85, 13)
-        Me.F2LblArcSpace.TabIndex = 4
-        Me.F2LblArcSpace.Text = "Arc SpaceWidth"
-        '
         'Txt2PHA
         '
-        Me.Txt2PHA.Location = New System.Drawing.Point(132, 74)
+        Me.Txt2PHA.Location = New System.Drawing.Point(143, 73)
         Me.Txt2PHA.Name = "Txt2PHA"
         Me.Txt2PHA.Size = New System.Drawing.Size(100, 20)
         Me.Txt2PHA.TabIndex = 3
@@ -345,7 +336,7 @@ Partial Class Form1
         '
         'Txt2ToothNo
         '
-        Me.Txt2ToothNo.Location = New System.Drawing.Point(132, 38)
+        Me.Txt2ToothNo.Location = New System.Drawing.Point(143, 37)
         Me.Txt2ToothNo.Name = "Txt2ToothNo"
         Me.Txt2ToothNo.Size = New System.Drawing.Size(100, 20)
         Me.Txt2ToothNo.TabIndex = 1
@@ -442,6 +433,16 @@ Partial Class Form1
         Me.PanelFunc1.Size = New System.Drawing.Size(258, 221)
         Me.PanelFunc1.TabIndex = 113
         Me.PanelFunc1.Visible = False
+        '
+        'ComboPA
+        '
+        Me.ComboPA.FormattingEnabled = True
+        Me.ComboPA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.ComboPA.Location = New System.Drawing.Point(48, 46)
+        Me.ComboPA.Name = "ComboPA"
+        Me.ComboPA.Size = New System.Drawing.Size(102, 21)
+        Me.ComboPA.TabIndex = 114
+        Me.ComboPA.Text = "NPA"
         '
         'ComboThick
         '
@@ -542,6 +543,7 @@ Partial Class Form1
         '
         'PanelFunc4
         '
+        Me.PanelFunc4.Controls.Add(Me.Combo4PA)
         Me.PanelFunc4.Controls.Add(Me.Txt4ToothNo)
         Me.PanelFunc4.Controls.Add(Me.Lbl4ToothNo)
         Me.PanelFunc4.Controls.Add(Me.Combo4Pitch)
@@ -553,12 +555,21 @@ Partial Class Form1
         Me.PanelFunc4.Controls.Add(Me.Txt4PHA)
         Me.PanelFunc4.Controls.Add(Me.Label4)
         Me.PanelFunc4.Controls.Add(Me.Txt4PA)
-        Me.PanelFunc4.Controls.Add(Me.Label5)
         Me.PanelFunc4.Location = New System.Drawing.Point(1040, 196)
         Me.PanelFunc4.Name = "PanelFunc4"
         Me.PanelFunc4.Size = New System.Drawing.Size(255, 221)
         Me.PanelFunc4.TabIndex = 116
         Me.PanelFunc4.Visible = False
+        '
+        'Combo4PA
+        '
+        Me.Combo4PA.FormattingEnabled = True
+        Me.Combo4PA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.Combo4PA.Location = New System.Drawing.Point(31, 83)
+        Me.Combo4PA.Name = "Combo4PA"
+        Me.Combo4PA.Size = New System.Drawing.Size(102, 21)
+        Me.Combo4PA.TabIndex = 122
+        Me.Combo4PA.Text = "NPA"
         '
         'Txt4ToothNo
         '
@@ -648,17 +659,9 @@ Partial Class Form1
         Me.Txt4PA.Size = New System.Drawing.Size(100, 20)
         Me.Txt4PA.TabIndex = 12
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(55, 87)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Pressure Angle"
-        '
         'PanelFunc3
         '
+        Me.PanelFunc3.Controls.Add(Me.ComboBox1)
         Me.PanelFunc3.Controls.Add(Me.Txt3ToothNo)
         Me.PanelFunc3.Controls.Add(Me.Label3)
         Me.PanelFunc3.Controls.Add(Me.ComboFn3Pitch)
@@ -670,12 +673,21 @@ Partial Class Form1
         Me.PanelFunc3.Controls.Add(Me.Txt3PHA)
         Me.PanelFunc3.Controls.Add(Me.Fn3LblPHA)
         Me.PanelFunc3.Controls.Add(Me.Txt3PA)
-        Me.PanelFunc3.Controls.Add(Me.Fn3LblPA)
         Me.PanelFunc3.Location = New System.Drawing.Point(562, 27)
         Me.PanelFunc3.Name = "PanelFunc3"
         Me.PanelFunc3.Size = New System.Drawing.Size(255, 213)
         Me.PanelFunc3.TabIndex = 117
         Me.PanelFunc3.Visible = False
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.ComboBox1.Location = New System.Drawing.Point(26, 61)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(102, 21)
+        Me.ComboBox1.TabIndex = 122
+        Me.ComboBox1.Text = "NPA"
         '
         'Txt3ToothNo
         '
@@ -765,15 +777,6 @@ Partial Class Form1
         Me.Txt3PA.Size = New System.Drawing.Size(100, 20)
         Me.Txt3PA.TabIndex = 1
         '
-        'Fn3LblPA
-        '
-        Me.Fn3LblPA.AutoSize = True
-        Me.Fn3LblPA.Location = New System.Drawing.Point(48, 64)
-        Me.Fn3LblPA.Name = "Fn3LblPA"
-        Me.Fn3LblPA.Size = New System.Drawing.Size(78, 13)
-        Me.Fn3LblPA.TabIndex = 0
-        Me.Fn3LblPA.Text = "Pressure Angle"
-        '
         'CheckHelical
         '
         Me.CheckHelical.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -808,22 +811,22 @@ Partial Class Form1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'ComboPA
+        'Combo2ASW
         '
-        Me.ComboPA.FormattingEnabled = True
-        Me.ComboPA.Items.AddRange(New Object() {"NPA", "CPA"})
-        Me.ComboPA.Location = New System.Drawing.Point(48, 46)
-        Me.ComboPA.Name = "ComboPA"
-        Me.ComboPA.Size = New System.Drawing.Size(102, 21)
-        Me.ComboPA.TabIndex = 114
-        Me.ComboPA.Text = "NPA"
+        Me.Combo2ASW.FormattingEnabled = True
+        Me.Combo2ASW.Items.AddRange(New Object() {"Normal Arc Spacewidth", "Transverse Arc Spacewidth"})
+        Me.Combo2ASW.Location = New System.Drawing.Point(3, 110)
+        Me.Combo2ASW.Name = "Combo2ASW"
+        Me.Combo2ASW.Size = New System.Drawing.Size(137, 21)
+        Me.Combo2ASW.TabIndex = 123
+        Me.Combo2ASW.Text = "Normal Arc Spacewidth"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(549, 410)
+        Me.ClientSize = New System.Drawing.Size(1331, 576)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)
@@ -877,7 +880,6 @@ Partial Class Form1
     Friend WithEvents Txt2MPD As TextBox
     Friend WithEvents LblF2MPD As Label
     Friend WithEvents Txt2ASW As TextBox
-    Friend WithEvents F2LblArcSpace As Label
     Friend WithEvents Txt2PHA As TextBox
     Friend WithEvents Fn2LblPHA As Label
     Friend WithEvents Txt2ToothNo As TextBox
@@ -909,7 +911,6 @@ Partial Class Form1
     Friend WithEvents Txt3PHA As TextBox
     Friend WithEvents Fn3LblPHA As Label
     Friend WithEvents Txt3PA As TextBox
-    Friend WithEvents Fn3LblPA As Label
     Friend WithEvents ComboThick As ComboBox
     Friend WithEvents CheckHelical As CheckBox
     Friend WithEvents CheckSpur As CheckBox
@@ -920,7 +921,6 @@ Partial Class Form1
     Friend WithEvents Txt4PHA As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Txt4PA As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents Combo2Pitch As ComboBox
     Friend WithEvents Txt2Pitch As TextBox
     Friend WithEvents Txt3ToothNo As TextBox
@@ -939,4 +939,7 @@ Partial Class Form1
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents ComboPA As ComboBox
+    Friend WithEvents Combo4PA As ComboBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Combo2ASW As ComboBox
 End Class
