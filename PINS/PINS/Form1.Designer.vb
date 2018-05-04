@@ -89,7 +89,7 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt4PA = New System.Windows.Forms.TextBox()
         Me.PanelFunc3 = New System.Windows.Forms.Panel()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Combo3PA = New System.Windows.Forms.ComboBox()
         Me.Txt3ToothNo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboFn3Pitch = New System.Windows.Forms.ComboBox()
@@ -107,6 +107,13 @@ Partial Class Form1
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PanelF3Results = New System.Windows.Forms.Panel()
+        Me.txtTn = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtTd = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtAng = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -115,6 +122,7 @@ Partial Class Form1
         Me.ResultsPanel.SuspendLayout()
         Me.PanelFunc4.SuspendLayout()
         Me.PanelFunc3.SuspendLayout()
+        Me.PanelF3Results.SuspendLayout()
         Me.SuspendLayout()
         '
         'Options
@@ -160,7 +168,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1340, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(1386, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -214,13 +222,13 @@ Partial Class Form1
         '
         'ComboPitch
         '
+        Me.ComboPitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboPitch.FormattingEnabled = True
         Me.ComboPitch.Items.AddRange(New Object() {"Diametral Pitch", "Module"})
-        Me.ComboPitch.Location = New System.Drawing.Point(43, 77)
+        Me.ComboPitch.Location = New System.Drawing.Point(20, 77)
         Me.ComboPitch.Name = "ComboPitch"
-        Me.ComboPitch.Size = New System.Drawing.Size(107, 21)
+        Me.ComboPitch.Size = New System.Drawing.Size(130, 21)
         Me.ComboPitch.TabIndex = 101
-        Me.ComboPitch.Text = "Diametral Pitch"
         '
         'TxtPitch
         '
@@ -291,37 +299,37 @@ Partial Class Form1
         '
         'Combo2PA
         '
+        Me.Combo2PA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo2PA.FormattingEnabled = True
         Me.Combo2PA.Items.AddRange(New Object() {"NPA", "CPA"})
-        Me.Combo2PA.Location = New System.Drawing.Point(24, 172)
+        Me.Combo2PA.Location = New System.Drawing.Point(3, 172)
         Me.Combo2PA.Name = "Combo2PA"
-        Me.Combo2PA.Size = New System.Drawing.Size(102, 21)
+        Me.Combo2PA.Size = New System.Drawing.Size(134, 21)
         Me.Combo2PA.TabIndex = 126
-        Me.Combo2PA.Text = "NPA"
         '
         'Combo2ASW
         '
+        Me.Combo2ASW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo2ASW.FormattingEnabled = True
         Me.Combo2ASW.Items.AddRange(New Object() {"Normal Arc Spacewidth", "Transverse Arc Spacewidth"})
-        Me.Combo2ASW.Location = New System.Drawing.Point(3, 110)
+        Me.Combo2ASW.Location = New System.Drawing.Point(0, 109)
         Me.Combo2ASW.Name = "Combo2ASW"
         Me.Combo2ASW.Size = New System.Drawing.Size(137, 21)
         Me.Combo2ASW.TabIndex = 123
-        Me.Combo2ASW.Text = "Normal Arc Spacewidth"
         '
         'Combo2Pitch
         '
+        Me.Combo2Pitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo2Pitch.FormattingEnabled = True
         Me.Combo2Pitch.Items.AddRange(New Object() {"Diametral Pitch", "Module"})
-        Me.Combo2Pitch.Location = New System.Drawing.Point(19, 3)
+        Me.Combo2Pitch.Location = New System.Drawing.Point(3, 3)
         Me.Combo2Pitch.Name = "Combo2Pitch"
-        Me.Combo2Pitch.Size = New System.Drawing.Size(107, 21)
+        Me.Combo2Pitch.Size = New System.Drawing.Size(134, 21)
         Me.Combo2Pitch.TabIndex = 124
-        Me.Combo2Pitch.Text = "Diametral Pitch"
         '
         'Txt2Pitch
         '
-        Me.Txt2Pitch.Location = New System.Drawing.Point(152, 0)
+        Me.Txt2Pitch.Location = New System.Drawing.Point(143, 3)
         Me.Txt2Pitch.Name = "Txt2Pitch"
         Me.Txt2Pitch.Size = New System.Drawing.Size(100, 20)
         Me.Txt2Pitch.TabIndex = 125
@@ -467,23 +475,24 @@ Partial Class Form1
         '
         'ComboPA
         '
+        Me.ComboPA.BackColor = System.Drawing.SystemColors.Window
+        Me.ComboPA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboPA.FormattingEnabled = True
         Me.ComboPA.Items.AddRange(New Object() {"NPA", "CPA"})
-        Me.ComboPA.Location = New System.Drawing.Point(48, 46)
+        Me.ComboPA.Location = New System.Drawing.Point(20, 46)
         Me.ComboPA.Name = "ComboPA"
-        Me.ComboPA.Size = New System.Drawing.Size(102, 21)
+        Me.ComboPA.Size = New System.Drawing.Size(130, 21)
         Me.ComboPA.TabIndex = 114
-        Me.ComboPA.Text = "NPA"
         '
         'ComboThick
         '
+        Me.ComboThick.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboThick.FormattingEnabled = True
         Me.ComboThick.Items.AddRange(New Object() {"Normal Arc Thickness", "Transverse Arc Thickness"})
         Me.ComboThick.Location = New System.Drawing.Point(20, 143)
         Me.ComboThick.Name = "ComboThick"
         Me.ComboThick.Size = New System.Drawing.Size(130, 21)
         Me.ComboThick.TabIndex = 113
-        Me.ComboThick.Text = "Normal Arc Thickness"
         '
         'TxtPHA
         '
@@ -692,7 +701,7 @@ Partial Class Form1
         '
         'PanelFunc3
         '
-        Me.PanelFunc3.Controls.Add(Me.ComboBox1)
+        Me.PanelFunc3.Controls.Add(Me.Combo3PA)
         Me.PanelFunc3.Controls.Add(Me.Txt3ToothNo)
         Me.PanelFunc3.Controls.Add(Me.Label3)
         Me.PanelFunc3.Controls.Add(Me.ComboFn3Pitch)
@@ -710,15 +719,15 @@ Partial Class Form1
         Me.PanelFunc3.TabIndex = 117
         Me.PanelFunc3.Visible = False
         '
-        'ComboBox1
+        'Combo3PA
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"NPA", "CPA"})
-        Me.ComboBox1.Location = New System.Drawing.Point(26, 61)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(102, 21)
-        Me.ComboBox1.TabIndex = 122
-        Me.ComboBox1.Text = "NPA"
+        Me.Combo3PA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Combo3PA.FormattingEnabled = True
+        Me.Combo3PA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.Combo3PA.Location = New System.Drawing.Point(26, 61)
+        Me.Combo3PA.Name = "Combo3PA"
+        Me.Combo3PA.Size = New System.Drawing.Size(102, 21)
+        Me.Combo3PA.TabIndex = 122
         '
         'Txt3ToothNo
         '
@@ -738,13 +747,13 @@ Partial Class Form1
         '
         'ComboFn3Pitch
         '
+        Me.ComboFn3Pitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboFn3Pitch.FormattingEnabled = True
         Me.ComboFn3Pitch.Items.AddRange(New Object() {"Diametral Pitch", "Module"})
         Me.ComboFn3Pitch.Location = New System.Drawing.Point(19, 6)
         Me.ComboFn3Pitch.Name = "ComboFn3Pitch"
         Me.ComboFn3Pitch.Size = New System.Drawing.Size(107, 21)
         Me.ComboFn3Pitch.TabIndex = 122
-        Me.ComboFn3Pitch.Text = "Diametral Pitch"
         '
         'Txt3Pitch
         '
@@ -842,12 +851,75 @@ Partial Class Form1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'PanelF3Results
+        '
+        Me.PanelF3Results.Controls.Add(Me.txtTn)
+        Me.PanelF3Results.Controls.Add(Me.Label2)
+        Me.PanelF3Results.Controls.Add(Me.txtTd)
+        Me.PanelF3Results.Controls.Add(Me.Label5)
+        Me.PanelF3Results.Controls.Add(Me.txtAng)
+        Me.PanelF3Results.Controls.Add(Me.Label6)
+        Me.PanelF3Results.Location = New System.Drawing.Point(12, 421)
+        Me.PanelF3Results.Name = "PanelF3Results"
+        Me.PanelF3Results.Size = New System.Drawing.Size(258, 83)
+        Me.PanelF3Results.TabIndex = 112
+        Me.PanelF3Results.Visible = False
+        '
+        'txtTn
+        '
+        Me.txtTn.Location = New System.Drawing.Point(150, 53)
+        Me.txtTn.Name = "txtTn"
+        Me.txtTn.Size = New System.Drawing.Size(100, 20)
+        Me.txtTn.TabIndex = 5
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(120, 56)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(20, 13)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Tn"
+        '
+        'txtTd
+        '
+        Me.txtTd.Location = New System.Drawing.Point(150, 28)
+        Me.txtTd.Name = "txtTd"
+        Me.txtTd.Size = New System.Drawing.Size(100, 20)
+        Me.txtTd.TabIndex = 3
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(120, 31)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(20, 13)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Td"
+        '
+        'txtAng
+        '
+        Me.txtAng.Location = New System.Drawing.Point(150, 3)
+        Me.txtAng.Name = "txtAng"
+        Me.txtAng.Size = New System.Drawing.Size(100, 20)
+        Me.txtAng.TabIndex = 1
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(114, 6)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(26, 13)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "Ang"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1340, 622)
+        Me.ClientSize = New System.Drawing.Size(1386, 606)
+        Me.Controls.Add(Me.PanelF3Results)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)
@@ -877,6 +949,8 @@ Partial Class Form1
         Me.PanelFunc4.PerformLayout()
         Me.PanelFunc3.ResumeLayout(False)
         Me.PanelFunc3.PerformLayout()
+        Me.PanelF3Results.ResumeLayout(False)
+        Me.PanelF3Results.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -961,8 +1035,15 @@ Partial Class Form1
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents ComboPA As ComboBox
     Friend WithEvents Combo4PA As ComboBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Combo3PA As ComboBox
     Friend WithEvents Combo2ASW As ComboBox
     Friend WithEvents Txt2PA As TextBox
     Friend WithEvents Combo2PA As ComboBox
+    Friend WithEvents PanelF3Results As Panel
+    Friend WithEvents txtTn As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtTd As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtAng As TextBox
+    Friend WithEvents Label6 As Label
 End Class

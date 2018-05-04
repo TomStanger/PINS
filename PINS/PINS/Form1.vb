@@ -8,7 +8,8 @@ Imports NCalc.Expression
 Public Class Form1
     Dim Deci As Integer
     Dim Comp, UPC As String
-    Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
+
+    Dim DP, inpDP, Ang, ToothNo, Td, Tn, ThetaR, temp1, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
 
 
@@ -35,13 +36,30 @@ Public Class Form1
         Txt4MPD.Text = (inpMPD * convert)
     End Sub
 
+    Private Sub PanelF3Results_Paint(sender As Object, e As PaintEventArgs) Handles PanelF3Results.Paint
+
+    End Sub
+
+
+
     'Printing
     Private Sub PrintToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem.Click
         PrintDocument1.Print()
 
     End Sub
 
+    Private Sub Txt3ToothNo_TextChanged(sender As Object, e As EventArgs) Handles Txt3ToothNo.TextChanged
+
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MsgBox(ComboPA.Text)
+        Txt2Pitch.Enabled = False
+        Txt2ASW.Enabled = False
+        Txt2PA.Enabled = False
+        TxtPitch.Enabled = False
+        TxtArcTTh.Enabled = False
+        TxtPA.Enabled = False
         convert = 1
         Me.PrintPreviewDialog1 = New PrintPreviewDialog
 
@@ -71,6 +89,9 @@ Public Class Form1
             MsgBox("An error has occured:" & i.ToString)
         End Try
     End Sub
+
+
+
     Private Sub PrintPreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintPreviewToolStripMenuItem.Click
         PrintPreviewDialog1.Document = PrintDocument1
 
@@ -162,9 +183,9 @@ Public Class Form1
     'End Sub
 
     Private Sub RadioFunc4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc4.CheckedChanged
-        PanelFunc3.Visible = True
-        PanelFunc3.Location = New Point(12, 41)
-        PanelFunc4.Visible = False
+        PanelFunc4.Visible = True
+        PanelFunc4.Location = New Point(12, 41)
+        PanelFunc3.Visible = False
         PanelFunc2.Visible = False
         PanelFunc1.Visible = False
         Doe = 0
@@ -219,9 +240,11 @@ Public Class Form1
     End Sub
 
     Private Sub RadioFunc3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc3.CheckedChanged
-        PanelFunc3.Visible = False
-        PanelFunc4.Visible = True
-        PanelFunc4.Location = New Point(12, 41)
+        PanelFunc3.Visible = True
+        PanelFunc4.Visible = False
+        PanelFunc3.Location = New Point(12, 41)
+        PanelF3Results.Location = New Point(12, 324)
+        PanelF3Results.Visible = True
         PanelFunc2.Visible = False
         PanelFunc1.Visible = False
         Doe = 0
@@ -414,7 +437,7 @@ Public Class Form1
             'Do 2nd func
         ElseIf RadioFunc3.Checked = True Then
 
-
+            Tfop()
             'Do 3rd func 
         ElseIf RadioFunc4.Checked = True Then
           
@@ -480,6 +503,7 @@ Public Class Form1
     End Sub
 
     Sub Opft()
+        PanelF3Results.Visible = True
         Rad = 180 / PI
         MPD1 = inpMPD
 
@@ -535,6 +559,48 @@ Public Class Form1
         TxtTheta.Text = ThetaR
         TxtRt.Text = Rt
         TxtDoe.Text = Doe
+
+    End Sub
+
+    Sub Tfop()
+        If Combo3PA.SelectedItem = "NPA" Then
+            PA = inpPA
+        ElseIf Combo3PA.SelectedItem = "CPA" Then
+            PA = Atan(Tan(inpPA) / Cos(BetaR))
+        End If
+        Rad = 180 / PI
+        MPD1 = inpMPD
+
+        PAr = PA / Rad
+        PHAr = PHA / 180 * PI
+        'SHOULD THAT BE PHAr or InpPHA?
+        Beta = PHAr
+        BetaR = Beta / Rad
+        PCD = ToothNo / Pitch
+        'MsgBox(PCD)
+        If Beta > 0.000001 Then
+
+            H = Atan(Tan(Beta) * Cos(PAr))
+
+            MPD = inpMPD / Cos(H)
+        End If
+
+        BCD = PCD * Cos(PAr)
+        Eo = ToothNo Mod 2
+
+        If Eo > 0.1 Then
+            Twoc = (DoP - MPD1) / Cos(90 / ToothNo / Rad)
+        Else
+            Twoc = DoP - MPD1
+        End If
+        Ang = Acos(BCD / Twoc)
+
+        Td = PCD * (PI / ToothNo + (Tan(Ang) - Ang) - (Tan(PAr) - PAr) - MPD / BCD)
+        Tn = Td * Cos(Beta)
+
+        txtAng.Text = Ang
+        txtTd.Text = Td
+        txtTn.Text = Tn
 
     End Sub
 
@@ -686,7 +752,9 @@ Public Class Form1
             CDP = 25.4 / inpDP
             DP = CDP / Cos(PHA)
             Pitch = DP
+
         End If
+
     End Sub
 
     Private Sub Txt2MPD_LostFocus(sender As Object, e As EventArgs) Handles Txt2MPD.LostFocus
@@ -735,12 +803,11 @@ Public Class Form1
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     Private Sub Txt3Pitch_LostFocus(sender As Object, e As EventArgs) Handles Txt3Pitch.LostFocus
-        Input(TxtPitch.Text)
-        DP = Val(TxtPitch.Text)
-        inpDP = Val(TxtPitch.Text)
+        Input(Txt3Pitch.Text)
+        DP = Val(Txt3Pitch.Text)
+        inpDP = Val(Txt3Pitch.Text)
         Dim CDP As Double
         If ComboFn3Pitch.SelectedItem = "Diametral Pitch" Then
-            inpDP = DP
             Pitch = DP
         ElseIf ComboFn3Pitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
@@ -751,11 +818,16 @@ Public Class Form1
         ElseIf ComboFn3Pitch.SelectedItem = "CDP" Then
             DP = inpDP / Cos(PHA)
             Pitch = DP
+        ElseIf ComboFn3Pitch.SelectedItem = "NDP" Then
+            inpDP = Val(Txt3Pitch.Text)
+            Pitch = DP
         ElseIf ComboFn3Pitch.SelectedItem = "CMOD" Then
             CDP = 25.4 / inpDP
             DP = CDP / Cos(PHA)
             Pitch = DP
+
         End If
+
     End Sub
 
     Private Sub Txt3MPD_LostFocus(sender As Object, e As EventArgs) Handles Txt3MPD.LostFocus
@@ -791,6 +863,13 @@ Public Class Form1
         PA = Val(Txt3PA.Text)
 
         inpPA = Val(Txt3PA.Text)
+    End Sub
+    Private Sub Txt3ToothNo_LostFocus(sender As Object, e As EventArgs) Handles Txt3ToothNo.LostFocus
+        Input(Txt3ToothNo.Text)
+        ToothNo = Val(Txt3ToothNo.Text)
+
+        inpToothNo = Val(Txt3ToothNo.Text)
+        MsgBox(ToothNo)
     End Sub
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -848,6 +927,72 @@ Public Class Form1
         PHA = Val(Txt4PHA.Text)
 
         inpPHA = Val(Txt4PHA.Text)
+    End Sub
+
+    'COMBO RESTRICTIONS
+    Private Sub ComboFn3Pitch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboFn3Pitch.SelectedIndexChanged
+        If ComboFn3Pitch.Text = "" Then
+            Txt3Pitch.Enabled = False
+        Else
+            Txt3Pitch.Enabled = True
+        End If
+    End Sub
+    Private Sub Combo3PA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combo3PA.SelectedIndexChanged
+        If Combo3PA.Text = "" Then
+            Txt3PA.Enabled = False
+        Else
+            Txt3PA.Enabled = True
+        End If
+    End Sub
+
+
+    Private Sub Combo2PA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combo2PA.SelectedIndexChanged
+        If Combo2PA.Text = "" Then
+            Txt2PA.Enabled = False
+        Else
+            Txt2PA.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Combo2ASW_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combo2ASW.SelectedIndexChanged
+        If Combo2ASW.Text = "" Then
+            Txt2ASW.Enabled = False
+        Else
+            Txt2ASW.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Combo2Pitch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combo2Pitch.SelectedIndexChanged
+        If Combo2Pitch.Text = "" Then
+            Txt2Pitch.Enabled = False
+        Else
+            Txt2Pitch.Enabled = True
+        End If
+    End Sub
+
+    Private Sub ComboPA_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboPA.SelectedIndexChanged
+        If ComboPA.Text = "" Then
+            TxtPA.Enabled = False
+        Else
+            TxtPA.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub ComboThick_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboThick.SelectedIndexChanged
+        If ComboThick.Text = "" Then
+            TxtArcTTh.Enabled = False
+        Else
+            TxtArcTTh.Enabled = True
+        End If
+    End Sub
+
+    Private Sub ComboPitch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboPitch.SelectedIndexChanged
+        If ComboPitch.Text = "" Then
+            TxtPitch.Enabled = False
+        Else
+            TxtPitch.Enabled = True
+        End If
     End Sub
 
     Private Sub Txt4PA_LostFocus(sender As Object, e As EventArgs) Handles Txt4PA.LostFocus
