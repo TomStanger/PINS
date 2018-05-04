@@ -44,6 +44,8 @@ Partial Class Form1
         Me.TxtMPD = New System.Windows.Forms.TextBox()
         Me.LblMPD = New System.Windows.Forms.Label()
         Me.PanelFunc2 = New System.Windows.Forms.Panel()
+        Me.Txt2PA = New System.Windows.Forms.TextBox()
+        Me.Combo2PA = New System.Windows.Forms.ComboBox()
         Me.Combo2ASW = New System.Windows.Forms.ComboBox()
         Me.Combo2Pitch = New System.Windows.Forms.ComboBox()
         Me.Txt2Pitch = New System.Windows.Forms.TextBox()
@@ -105,8 +107,6 @@ Partial Class Form1
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.Combo2PA = New System.Windows.Forms.ComboBox()
-        Me.Txt2PA = New System.Windows.Forms.TextBox()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -160,7 +160,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1331, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(1340, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -276,11 +276,28 @@ Partial Class Form1
         Me.PanelFunc2.Controls.Add(Me.Fn2LblPHA)
         Me.PanelFunc2.Controls.Add(Me.Txt2ToothNo)
         Me.PanelFunc2.Controls.Add(Me.Fn2LblToothno)
-        Me.PanelFunc2.Location = New System.Drawing.Point(562, 246)
+        Me.PanelFunc2.Location = New System.Drawing.Point(567, 41)
         Me.PanelFunc2.Name = "PanelFunc2"
         Me.PanelFunc2.Size = New System.Drawing.Size(255, 222)
         Me.PanelFunc2.TabIndex = 110
         Me.PanelFunc2.Visible = False
+        '
+        'Txt2PA
+        '
+        Me.Txt2PA.Location = New System.Drawing.Point(143, 173)
+        Me.Txt2PA.Name = "Txt2PA"
+        Me.Txt2PA.Size = New System.Drawing.Size(100, 20)
+        Me.Txt2PA.TabIndex = 115
+        '
+        'Combo2PA
+        '
+        Me.Combo2PA.FormattingEnabled = True
+        Me.Combo2PA.Items.AddRange(New Object() {"NPA", "CPA"})
+        Me.Combo2PA.Location = New System.Drawing.Point(24, 172)
+        Me.Combo2PA.Name = "Combo2PA"
+        Me.Combo2PA.Size = New System.Drawing.Size(102, 21)
+        Me.Combo2PA.TabIndex = 126
+        Me.Combo2PA.Text = "NPA"
         '
         'Combo2ASW
         '
@@ -304,7 +321,7 @@ Partial Class Form1
         '
         'Txt2Pitch
         '
-        Me.Txt2Pitch.Location = New System.Drawing.Point(143, 2)
+        Me.Txt2Pitch.Location = New System.Drawing.Point(152, 0)
         Me.Txt2Pitch.Name = "Txt2Pitch"
         Me.Txt2Pitch.Size = New System.Drawing.Size(100, 20)
         Me.Txt2Pitch.TabIndex = 125
@@ -687,7 +704,7 @@ Partial Class Form1
         Me.PanelFunc3.Controls.Add(Me.Txt3PHA)
         Me.PanelFunc3.Controls.Add(Me.Fn3LblPHA)
         Me.PanelFunc3.Controls.Add(Me.Txt3PA)
-        Me.PanelFunc3.Location = New System.Drawing.Point(562, 27)
+        Me.PanelFunc3.Location = New System.Drawing.Point(567, 300)
         Me.PanelFunc3.Name = "PanelFunc3"
         Me.PanelFunc3.Size = New System.Drawing.Size(255, 213)
         Me.PanelFunc3.TabIndex = 117
@@ -825,29 +842,12 @@ Partial Class Form1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'Combo2PA
-        '
-        Me.Combo2PA.FormattingEnabled = True
-        Me.Combo2PA.Items.AddRange(New Object() {"NPA", "CPA"})
-        Me.Combo2PA.Location = New System.Drawing.Point(24, 172)
-        Me.Combo2PA.Name = "Combo2PA"
-        Me.Combo2PA.Size = New System.Drawing.Size(102, 21)
-        Me.Combo2PA.TabIndex = 126
-        Me.Combo2PA.Text = "NPA"
-        '
-        'Txt2PA
-        '
-        Me.Txt2PA.Location = New System.Drawing.Point(143, 173)
-        Me.Txt2PA.Name = "Txt2PA"
-        Me.Txt2PA.Size = New System.Drawing.Size(100, 20)
-        Me.Txt2PA.TabIndex = 115
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1331, 576)
+        Me.ClientSize = New System.Drawing.Size(1340, 622)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
         Me.Controls.Add(Me.CheckSpur)

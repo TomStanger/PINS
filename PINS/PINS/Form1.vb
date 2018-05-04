@@ -10,9 +10,7 @@ Public Class Form1
     Dim Comp, UPC As String
     Dim DP, inpDP, ToothNo, ThetaR, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
-    Private Sub Txt2Pitch_TextChanged(sender As Object, e As EventArgs) Handles Txt2Pitch.TextChanged
 
-    End Sub
 
     Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
         If convert = 25.4 Then
@@ -208,6 +206,7 @@ Public Class Form1
         'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
+        Txt2PA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
         TxtMPD.Text = ""
@@ -265,6 +264,7 @@ Public Class Form1
         'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
+        Txt2PA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
         TxtMPD.Text = ""
@@ -326,6 +326,7 @@ Public Class Form1
         'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
+        Txt2PA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
         TxtMPD.Text = ""
@@ -385,6 +386,7 @@ Public Class Form1
         'Txt3PCD.Text = ""
         'Txt4PCD.Text = ""
         TxtPA.Text = ""
+        Txt2PA.Text = ""
         Txt3PA.Text = ""
         Txt4PA.Text = ""
         TxtMPD.Text = ""
@@ -429,7 +431,7 @@ Public Class Form1
         'SHOULD THAT BE PHAr or InpPHA?
         Beta = PHAr
         H = 0
-        MPD1 = MPD
+        MPD1 = inpMPD
         BetaR = Beta / Rad
         PCD = ToothNo / Pitch
         ' MsgBox(Pitch)
@@ -620,7 +622,7 @@ Public Class Form1
         inpDP = Val(TxtPitch.Text)
         Dim CDP As Double
         If ComboPitch.SelectedItem = "Diametral Pitch" Then
-            inpDP = DP
+            DP = inpDP
             Pitch = DP
         ElseIf ComboPitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
@@ -676,6 +678,9 @@ Public Class Form1
             Pitch = DP
         ElseIf Combo2Pitch.SelectedItem = "CDP" Then
             DP = inpDP / Cos(PHA)
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "NDP" Then
+            inpDP = Val(Txt2Pitch.Text)
             Pitch = DP
         ElseIf Combo2Pitch.SelectedItem = "CMOD" Then
             CDP = 25.4 / inpDP
