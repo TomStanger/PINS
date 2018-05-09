@@ -8,11 +8,125 @@ Imports NCalc.Expression
 Public Class Form1
     Dim Deci As Integer
     Dim Comp, UPC As String
+    Dim Ang, Dang As Single
+    Dim MyGraphics As Object
+    Dim BlackBrush As New SolidBrush(Color.Black)
+    Dim drawFont As New Font("Arial", 10)
+    Dim titlefont As New Font("Arial", 16)
+    Dim DP, inpDP, ToothNo, Td, Tn, Sd, Sn, ThetaR, temp1, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
-    Dim DP, inpDP, Ang, ToothNo, Td, Tn, ThetaR, temp1, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
+    Public Sub FormPaint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
+        Dim PrintGraphics As Graphics = Me.CreateGraphics
+        PrintGraphics.PageUnit = GraphicsUnit.Millimeter
+    End Sub
+
+    Public Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+
+
+        e.Graphics.DrawImage(PictureBox1.Image, 50, 50)
+        e.Graphics.DrawString("Inputs", titlefont, BlackBrush, 150, 150)
+        e.Graphics.DrawString("Outputs", titlefont, BlackBrush, 150, 475)
+        If RadioFunc1.Checked = True Then
+
+
+            e.Graphics.DrawString("Pitch", drawFont, BlackBrush, 200, 200)
+            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 200)
+
+            e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
+            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+
+            e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 300)
+            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 300)
+
+            e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 350)
+            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 350)
+
+            e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 400)
+            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 400)
 
 
 
+            e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 550)
+            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 550)
+
+            e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 600)
+            e.Graphics.DrawString(FormatNumber(Theta, Deci), drawFont, Brushes.Black, 375, 600)
+
+            e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 650)
+            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 650)
+
+            If convert = "1" Then
+                e.Graphics.DrawString("Figures are in Inches", drawFont, BlackBrush, 450, 850)
+            ElseIf convert = "25.4" Then
+                e.Graphics.DrawString("Figures are in Millimeters", drawFont, BlackBrush, 450, 850)
+            End If
+        ElseIf RadioFunc2.Checked = True Then
+            e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 200)
+            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 200)
+
+            e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
+            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+
+            e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 300)
+            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 300)
+
+            e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 350)
+            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 350)
+
+            e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 400)
+            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 400)
+
+            e.Graphics.DrawString("Arc Spacewidth", drawFont, BlackBrush, 200, 450)
+            e.Graphics.DrawString(FormatNumber(inpArcTTh, Deci), drawFont, Brushes.Black, 375, 450)
+
+
+            e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 500)
+            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 500)
+
+            e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 550)
+            e.Graphics.DrawString(FormatNumber(Theta, Deci), drawFont, Brushes.Black, 375, 550)
+
+            e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 600)
+            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 600)
+        ElseIf RadioFunc3.Checked = True Then
+
+            e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 200)
+            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 200)
+
+            e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
+            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+
+            e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 300)
+            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 300)
+
+            e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 350)
+            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 350)
+
+            e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 400)
+            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 400)
+
+            e.Graphics.DrawString("Arc Spacewidth", drawFont, BlackBrush, 200, 450)
+            e.Graphics.DrawString(FormatNumber(inpArcTTh, Deci), drawFont, Brushes.Black, 375, 450)
+
+
+            e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 500)
+            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 500)
+
+
+
+            e.Graphics.DrawString("Ang", drawFont, BlackBrush, 200, 550)
+            e.Graphics.DrawString(FormatNumber(Dang, Deci), drawFont, Brushes.Black, 375, 550)
+
+            e.Graphics.DrawString("Td", drawFont, BlackBrush, 200, 600)
+            e.Graphics.DrawString(FormatNumber(Td, Deci), drawFont, Brushes.Black, 375, 600)
+
+            e.Graphics.DrawString("Tn", drawFont, BlackBrush, 200, 650)
+            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 650)
+
+
+
+        End If
+    End Sub
     Private Sub Units_Click(sender As Object, e As EventArgs) Handles Units.Click
         If convert = 25.4 Then
             Units.Text = "Inches"
@@ -36,12 +150,6 @@ Public Class Form1
         Txt4MPD.Text = (inpMPD * convert)
     End Sub
 
-    Private Sub PanelF3Results_Paint(sender As Object, e As PaintEventArgs) Handles PanelF3Results.Paint
-
-    End Sub
-
-
-
     'Printing
     Private Sub PrintToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem.Click
         PrintDocument1.Print()
@@ -53,7 +161,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MsgBox(ComboPA.Text)
+        ' MsgBox(ComboPA.Text)
         Txt2Pitch.Enabled = False
         Txt2ASW.Enabled = False
         Txt2PA.Enabled = False
@@ -185,7 +293,10 @@ Public Class Form1
     Private Sub RadioFunc4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc4.CheckedChanged
         PanelFunc4.Visible = True
         PanelFunc4.Location = New Point(12, 41)
+        PanelF4Results.Location = New Point(12, 324)
+        PanelF4Results.Visible = True
         PanelFunc3.Visible = False
+        PanelF3Results.Visible = False
         PanelFunc2.Visible = False
         PanelFunc1.Visible = False
         Doe = 0
@@ -208,6 +319,8 @@ Public Class Form1
         Vol = 0
         AlphaR = 0
         Pitch = 0
+        Ang = 0
+        Dang = 0
         TxtPitch.Text = ""
         Txt2Pitch.Text = ""
         Txt3Pitch.Text = ""
@@ -245,6 +358,7 @@ Public Class Form1
         PanelFunc3.Location = New Point(12, 41)
         PanelF3Results.Location = New Point(12, 324)
         PanelF3Results.Visible = True
+        PanelF4Results.Visible = False
         PanelFunc2.Visible = False
         PanelFunc1.Visible = False
         Doe = 0
@@ -302,6 +416,7 @@ Public Class Form1
 
     Private Sub RadioFunc2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc2.CheckedChanged
         PanelFunc3.Visible = False
+        ResultsPanel.Visible = True
         PanelFunc4.Visible = False
         PanelFunc2.Visible = True
         PanelFunc2.Location = New Point(12, 41)
@@ -367,7 +482,12 @@ Public Class Form1
         PanelFunc4.Visible = False
         PanelFunc2.Visible = False
         PanelFunc1.Visible = True
-
+        ResultsPanel.Visible = True
+        PanelF3Results.Visible = False
+        PanelF4Results.Visible = False
+        txtTd.Visible = False
+        txtTn.Visible = False
+        txtAng.Visible = False
         TxtPA.Visible = True
         ComboPA.Visible = True
 
@@ -440,14 +560,14 @@ Public Class Form1
             Tfop()
             'Do 3rd func 
         ElseIf RadioFunc4.Checked = True Then
-          
 
+            Sfup()
             'Do 4th func
         Else
             MsgBox("Please select a function")
         End If
     End Sub
-    Sub Upfs()
+    Sub Upfs() 'Function 2
         Rad = 180 / PI
         PAr = PA / Rad
         PHAr = PHA / 180 * PI
@@ -502,14 +622,16 @@ Public Class Form1
 
     End Sub
 
-    Sub Opft()
-        PanelF3Results.Visible = True
+    Sub Opft() 'FUNCTION 1
+
+
+        PanelF3Results.Visible = False
         Rad = 180 / PI
         MPD1 = inpMPD
 
         PAr = PA / Rad
         PHAr = PHA / 180 * PI
-        'SHOULD THAT BE PHAr or InpPHA?
+
         Beta = PHAr
         BetaR = Beta / Rad
         PCD = ToothNo / Pitch
@@ -562,7 +684,14 @@ Public Class Form1
 
     End Sub
 
-    Sub Tfop()
+    Sub Tfop() 'Function 3
+
+
+        If RadioFunc3.Checked = True Then
+            PanelF3Results.Visible = True
+            PanelF4Results.Visible = False
+        End If
+
         If Combo3PA.SelectedItem = "NPA" Then
             PA = inpPA
         ElseIf Combo3PA.SelectedItem = "CPA" Then
@@ -596,13 +725,68 @@ Public Class Form1
         Ang = Acos(BCD / Twoc)
 
         Td = PCD * (PI / ToothNo + (Tan(Ang) - Ang) - (Tan(PAr) - PAr) - MPD / BCD)
-        Tn = Td * Cos(Beta)
+        Tn = Td * Cos(BetaR)
 
-        txtAng.Text = Ang
+        Dang = Ang * 180 / PI
+
+        txtAng.Text = Dang
         txtTd.Text = Td
         txtTn.Text = Tn
 
     End Sub
+
+    Sub Sfup() 'Function 4
+
+
+        If RadioFunc4.Checked = True Then
+            PanelF4Results.Visible = True
+            PanelF3Results.Visible = False
+        End If
+
+
+        If Combo4PA.SelectedItem = "NPA" Then
+            PA = inpPA
+        ElseIf Combo4PA.SelectedItem = "CPA" Then
+            PA = Atan(Tan(inpPA) / Cos(BetaR))
+        End If
+
+        Rad = 180 / PI
+        MPD1 = inpMPD
+
+        PAr = PA / Rad
+        PHAr = PHA / 180 * PI
+
+        Beta = PHAr
+        BetaR = Beta / Rad
+        PCD = ToothNo / Pitch
+
+        If Beta > 0.000001 Then
+            H = Atan(Tan(Beta) * Cos(PA))
+            MPD = inpMPD / Cos(H)
+        End If
+        BCD = PCD * Cos(PAr)
+
+        Eo = ToothNo Mod 2
+
+        If Eo > 0.1 Then
+            Twoc = (DoP + MPD1) / Cos(90 / ToothNo / Rad)
+        Else
+            Twoc = inpDoP + MPD1
+        End If
+
+        Ang = Acos(BCD / Twoc)
+
+        Sd = PCD * (Tan(Ang) - Ang + MPD / BCD - (Tan(PA) - PA))
+        Sn = Sd * Cos(BetaR)
+
+        Dang = Ang * 180 / PI
+
+        Txt4Ang.Text = Dang
+        Txt4Sd.Text = Sd
+        Txt4Sn.Text = Sn
+
+    End Sub
+
 
     Sub Input(ByRef Input As String)
         If Input = "" Then Exit Sub
@@ -690,6 +874,9 @@ Public Class Form1
         If ComboPitch.SelectedItem = "Diametral Pitch" Then
             DP = inpDP
             Pitch = DP
+        ElseIf ComboPitch.SelectedItem = "NDP" Then
+            DP = inpDP
+            Pitch = DP
         ElseIf ComboPitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
             '  MsgBox(DP)
@@ -712,6 +899,9 @@ Public Class Form1
         ElseIf Combo2Pitch.SelectedItem = "Module" Then
             DP = 25.4 / inpDP
             '  MsgBox(DP)
+            Pitch = DP
+        ElseIf Combo2Pitch.SelectedItem = "NDP" Then
+            DP = inpDP
             Pitch = DP
         ElseIf Combo2Pitch.SelectedItem = "NMOD" Then
             DP = 25.4 / inpDP
@@ -815,6 +1005,9 @@ Public Class Form1
         ElseIf ComboFn3Pitch.SelectedItem = "NMOD" Then
             DP = 25.4 / inpDP
             Pitch = DP
+        ElseIf ComboFn3Pitch.SelectedItem = "NDP" Then
+            DP = inpDP
+            Pitch = DP
         ElseIf ComboFn3Pitch.SelectedItem = "CDP" Then
             DP = inpDP / Cos(PHA)
             Pitch = DP
@@ -825,7 +1018,6 @@ Public Class Form1
             CDP = 25.4 / inpDP
             DP = CDP / Cos(PHA)
             Pitch = DP
-
         End If
 
     End Sub
@@ -869,7 +1061,7 @@ Public Class Form1
         ToothNo = Val(Txt3ToothNo.Text)
 
         inpToothNo = Val(Txt3ToothNo.Text)
-        MsgBox(ToothNo)
+        '   MsgBox(ToothNo)
     End Sub
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -877,9 +1069,9 @@ Public Class Form1
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     Private Sub Txt4Pitch_LostFocus(sender As Object, e As EventArgs) Handles Txt4Pitch.LostFocus
-        Input(TxtPitch.Text)
-        DP = Val(TxtPitch.Text)
-        inpDP = Val(TxtPitch.Text)
+        Input(Txt4Pitch.Text)
+        DP = Val(Txt4Pitch.Text)
+        inpDP = Val(Txt4Pitch.Text)
 
         Dim CDP As Double
         If Combo4Pitch.SelectedItem = "Diametral Pitch" Then
@@ -890,6 +1082,9 @@ Public Class Form1
             Pitch = DP
         ElseIf Combo4Pitch.SelectedItem = "NMOD" Then
             DP = 25.4 / inpDP
+            Pitch = DP
+        ElseIf Combo4Pitch.SelectedItem = "NDP" Then
+            DP = inpDP
             Pitch = DP
         ElseIf Combo4Pitch.SelectedItem = "CDP" Then
             DP = inpDP / Cos(PHA)
@@ -1000,6 +1195,12 @@ Public Class Form1
         PA = Val(Txt4PA.Text)
 
         inpPA = Val(Txt4PA.Text)
+    End Sub
+    Private Sub Txt4ToothNo_LostFocus(sender As Object, e As EventArgs) Handles Txt4ToothNo.LostFocus
+        Input(Txt4ToothNo.Text)
+        ToothNo = Val(Txt4ToothNo.Text)
+
+        inpToothNo = Val(Txt4ToothNo.Text)
     End Sub
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Shared Function Inv(ByVal Ang As Double) As Double

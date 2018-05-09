@@ -114,6 +114,13 @@ Partial Class Form1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtAng = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.PanelF4Results = New System.Windows.Forms.Panel()
+        Me.Txt4Sn = New System.Windows.Forms.TextBox()
+        Me.LblSn = New System.Windows.Forms.Label()
+        Me.Txt4Sd = New System.Windows.Forms.TextBox()
+        Me.LblSD = New System.Windows.Forms.Label()
+        Me.Txt4Ang = New System.Windows.Forms.TextBox()
+        Me.LblF4Ang = New System.Windows.Forms.Label()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelFunc2.SuspendLayout()
@@ -123,6 +130,7 @@ Partial Class Form1
         Me.PanelFunc4.SuspendLayout()
         Me.PanelFunc3.SuspendLayout()
         Me.PanelF3Results.SuspendLayout()
+        Me.PanelF4Results.SuspendLayout()
         Me.SuspendLayout()
         '
         'Options
@@ -168,7 +176,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1386, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(1506, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -603,13 +611,13 @@ Partial Class Form1
         '
         'Combo4PA
         '
+        Me.Combo4PA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo4PA.FormattingEnabled = True
         Me.Combo4PA.Items.AddRange(New Object() {"NPA", "CPA"})
         Me.Combo4PA.Location = New System.Drawing.Point(31, 83)
         Me.Combo4PA.Name = "Combo4PA"
         Me.Combo4PA.Size = New System.Drawing.Size(102, 21)
         Me.Combo4PA.TabIndex = 122
-        Me.Combo4PA.Text = "NPA"
         '
         'Txt4ToothNo
         '
@@ -629,13 +637,13 @@ Partial Class Form1
         '
         'Combo4Pitch
         '
+        Me.Combo4Pitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo4Pitch.FormattingEnabled = True
         Me.Combo4Pitch.Items.AddRange(New Object() {"Diametral Pitch", "Module"})
         Me.Combo4Pitch.Location = New System.Drawing.Point(26, 19)
         Me.Combo4Pitch.Name = "Combo4Pitch"
         Me.Combo4Pitch.Size = New System.Drawing.Size(107, 21)
         Me.Combo4Pitch.TabIndex = 126
-        Me.Combo4Pitch.Text = "Diametral Pitch"
         '
         'Txt4Pitch
         '
@@ -672,9 +680,9 @@ Partial Class Form1
         Me.Fn4LblSop.AutoSize = True
         Me.Fn4LblSop.Location = New System.Drawing.Point(30, 151)
         Me.Fn4LblSop.Name = "Fn4LblSop"
-        Me.Fn4LblSop.Size = New System.Drawing.Size(103, 13)
+        Me.Fn4LblSop.Size = New System.Drawing.Size(109, 13)
         Me.Fn4LblSop.TabIndex = 15
-        Me.Fn4LblSop.Text = "Dimension over Pins"
+        Me.Fn4LblSop.Text = "Dimension under Pins"
         '
         'Txt4PHA
         '
@@ -859,7 +867,7 @@ Partial Class Form1
         Me.PanelF3Results.Controls.Add(Me.Label5)
         Me.PanelF3Results.Controls.Add(Me.txtAng)
         Me.PanelF3Results.Controls.Add(Me.Label6)
-        Me.PanelF3Results.Location = New System.Drawing.Point(12, 421)
+        Me.PanelF3Results.Location = New System.Drawing.Point(12, 424)
         Me.PanelF3Results.Name = "PanelF3Results"
         Me.PanelF3Results.Size = New System.Drawing.Size(258, 83)
         Me.PanelF3Results.TabIndex = 112
@@ -913,12 +921,75 @@ Partial Class Form1
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Ang"
         '
+        'PanelF4Results
+        '
+        Me.PanelF4Results.Controls.Add(Me.Txt4Sn)
+        Me.PanelF4Results.Controls.Add(Me.LblSn)
+        Me.PanelF4Results.Controls.Add(Me.Txt4Sd)
+        Me.PanelF4Results.Controls.Add(Me.LblSD)
+        Me.PanelF4Results.Controls.Add(Me.Txt4Ang)
+        Me.PanelF4Results.Controls.Add(Me.LblF4Ang)
+        Me.PanelF4Results.Location = New System.Drawing.Point(986, 427)
+        Me.PanelF4Results.Name = "PanelF4Results"
+        Me.PanelF4Results.Size = New System.Drawing.Size(258, 83)
+        Me.PanelF4Results.TabIndex = 113
+        Me.PanelF4Results.Visible = False
+        '
+        'Txt4Sn
+        '
+        Me.Txt4Sn.Location = New System.Drawing.Point(150, 53)
+        Me.Txt4Sn.Name = "Txt4Sn"
+        Me.Txt4Sn.Size = New System.Drawing.Size(100, 20)
+        Me.Txt4Sn.TabIndex = 5
+        '
+        'LblSn
+        '
+        Me.LblSn.AutoSize = True
+        Me.LblSn.Location = New System.Drawing.Point(120, 56)
+        Me.LblSn.Name = "LblSn"
+        Me.LblSn.Size = New System.Drawing.Size(20, 13)
+        Me.LblSn.TabIndex = 4
+        Me.LblSn.Text = "Sn"
+        '
+        'Txt4Sd
+        '
+        Me.Txt4Sd.Location = New System.Drawing.Point(150, 28)
+        Me.Txt4Sd.Name = "Txt4Sd"
+        Me.Txt4Sd.Size = New System.Drawing.Size(100, 20)
+        Me.Txt4Sd.TabIndex = 3
+        '
+        'LblSD
+        '
+        Me.LblSD.AutoSize = True
+        Me.LblSD.Location = New System.Drawing.Point(120, 31)
+        Me.LblSD.Name = "LblSD"
+        Me.LblSD.Size = New System.Drawing.Size(20, 13)
+        Me.LblSD.TabIndex = 2
+        Me.LblSD.Text = "Sd"
+        '
+        'Txt4Ang
+        '
+        Me.Txt4Ang.Location = New System.Drawing.Point(150, 3)
+        Me.Txt4Ang.Name = "Txt4Ang"
+        Me.Txt4Ang.Size = New System.Drawing.Size(100, 20)
+        Me.Txt4Ang.TabIndex = 1
+        '
+        'LblF4Ang
+        '
+        Me.LblF4Ang.AutoSize = True
+        Me.LblF4Ang.Location = New System.Drawing.Point(114, 6)
+        Me.LblF4Ang.Name = "LblF4Ang"
+        Me.LblF4Ang.Size = New System.Drawing.Size(26, 13)
+        Me.LblF4Ang.TabIndex = 0
+        Me.LblF4Ang.Text = "Ang"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1386, 606)
+        Me.ClientSize = New System.Drawing.Size(1506, 650)
+        Me.Controls.Add(Me.PanelF4Results)
         Me.Controls.Add(Me.PanelF3Results)
         Me.Controls.Add(Me.ResultsPanel)
         Me.Controls.Add(Me.CheckHelical)
@@ -951,6 +1022,8 @@ Partial Class Form1
         Me.PanelFunc3.PerformLayout()
         Me.PanelF3Results.ResumeLayout(False)
         Me.PanelF3Results.PerformLayout()
+        Me.PanelF4Results.ResumeLayout(False)
+        Me.PanelF4Results.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1046,4 +1119,11 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents txtAng As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents PanelF4Results As Panel
+    Friend WithEvents Txt4Sn As TextBox
+    Friend WithEvents LblSn As Label
+    Friend WithEvents Txt4Sd As TextBox
+    Friend WithEvents LblSD As Label
+    Friend WithEvents Txt4Ang As TextBox
+    Friend WithEvents LblF4Ang As Label
 End Class
