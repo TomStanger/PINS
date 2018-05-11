@@ -30,28 +30,28 @@ Public Class Form1
 
 
             e.Graphics.DrawString("Pitch", drawFont, BlackBrush, 200, 200)
-            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 200)
+            e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 200)
 
             e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 225)
-            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 225)
+            e.Graphics.DrawString(inpPA, drawFont, Brushes.Black, 375, 225)
 
             e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 250)
-            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 250)
+            e.Graphics.DrawString(inpPHA, drawFont, Brushes.Black, 375, 250)
 
             e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 275)
-            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 275)
+            e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 275)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 300)
-            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 300)
+            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Normal / Transverse Arc Thickness", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(FormatNumber(inpArcTTh, Deci), drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(inpArcTTh, drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 550)
-            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 550)
+            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 375, 550)
 
             e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 600)
-            e.Graphics.DrawString(FormatNumber(Theta, Deci), drawFont, Brushes.Black, 375, 600)
+            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 375, 600)
 
             e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 650)
             e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 650)
@@ -63,51 +63,51 @@ Public Class Form1
             End If
         ElseIf RadioFunc2.Checked = True Then
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
-            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 225)
+            e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
 
             e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
-            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+            e.Graphics.DrawString(inpPA, drawFont, Brushes.Black, 375, 250)
 
             e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 275)
-            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 275)
+            e.Graphics.DrawString(inpPHA, drawFont, Brushes.Black, 375, 275)
 
             e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 300)
-            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 300)
+            e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Arc Spacewidth", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(FormatNumber(inpArcTTh, Deci), drawFont, Brushes.Black, 375, 350)
+            e.Graphics.DrawString(inpASW, drawFont, Brushes.Black, 375, 350)
 
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 500)
-            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 500)
+            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 375, 500)
 
             e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 525)
-            e.Graphics.DrawString(FormatNumber(Theta, Deci), drawFont, Brushes.Black, 375, 525)
+            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 375, 525)
 
             e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 550)
             e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 550)
         ElseIf RadioFunc3.Checked = True Then
 
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
-            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 225)
+            e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
 
             e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
-            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+            e.Graphics.DrawString(inpPA, drawFont, Brushes.Black, 375, 250)
 
             e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 275)
-            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 275)
+            e.Graphics.DrawString(inpPHA, drawFont, Brushes.Black, 375, 275)
 
             e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 300)
-            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 300)
+            e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 350)
+            e.Graphics.DrawString(DoP, drawFont, Brushes.Black, 375, 350)
 
 
 
@@ -120,26 +120,25 @@ Public Class Form1
             e.Graphics.DrawString("Tn", drawFont, BlackBrush, 200, 600)
             e.Graphics.DrawString(FormatNumber(Tn, Deci), drawFont, Brushes.Black, 375, 600)
 
-
         ElseIf RadioFunc4.Checked = True Then
 
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
-            e.Graphics.DrawString(FormatNumber(inpDP, Deci), drawFont, Brushes.Black, 375, 225)
+            e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
 
             e.Graphics.DrawString("Pressure Angle", drawFont, BlackBrush, 200, 250)
-            e.Graphics.DrawString(FormatNumber(inpPA, Deci), drawFont, Brushes.Black, 375, 250)
+            e.Graphics.DrawString(inpPA, drawFont, Brushes.Black, 375, 250)
 
             e.Graphics.DrawString("Pitch Helix Angle", drawFont, BlackBrush, 200, 275)
-            e.Graphics.DrawString(FormatNumber(inpPHA, Deci), drawFont, Brushes.Black, 375, 275)
+            e.Graphics.DrawString(inpPHA, drawFont, Brushes.Black, 375, 275)
 
             e.Graphics.DrawString("Tooth Number", drawFont, BlackBrush, 200, 300)
-            e.Graphics.DrawString(FormatNumber(inpToothNo, Deci), drawFont, Brushes.Black, 375, 300)
+            e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(FormatNumber(inpMPD, Deci), drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(FormatNumber(DoP, Deci), drawFont, Brushes.Black, 375, 350)
+            e.Graphics.DrawString(DoP, drawFont, Brushes.Black, 375, 350)
 
 
 
@@ -191,6 +190,7 @@ Public Class Form1
         TxtPitch.Enabled = False
         TxtArcTTh.Enabled = False
         TxtPA.Enabled = False
+        Deci = 5
         convert = 1
         Me.PrintPreviewDialog1 = New PrintPreviewDialog
 
@@ -639,9 +639,9 @@ Public Class Form1
         Rt = BCD / (2 * Cos(Theta))
         ThetaR = Theta * 180 / PI
 
-        TxtTheta.Text = ThetaR
-        TxtRt.Text = Rt
-        TxtDoe.Text = Doe
+        TxtTheta.Text = FormatNumber(ThetaR, Deci)
+        TxtRt.Text = FormatNumber(Rt, Deci)
+        TxtDoe.Text = FormatNumber(Doe, Deci)
 
     End Sub
     Sub Upfs() 'Function 2
@@ -693,9 +693,9 @@ Public Class Form1
         Rt = BCD / (2 * Cos(Theta))
         ThetaR = Theta * 180 / PI
 
-        TxtTheta.Text = ThetaR
-        TxtRt.Text = Rt
-        TxtDoe.Text = Doe
+        TxtTheta.Text = FormatNumber(ThetaR, Deci)
+        TxtRt.Text = FormatNumber(Rt, Deci)
+        TxtDoe.Text = FormatNumber(Doe, Deci)
 
     End Sub
     Sub Tfop() 'Function 3
@@ -743,9 +743,9 @@ Public Class Form1
 
         Dang = Ang * 180 / PI
 
-        txtAng.Text = Dang
-        txtTd.Text = Td
-        txtTn.Text = Tn
+        txtAng.Text = FormatNumber(Dang, Deci)
+        txtTd.Text = FormatNumber(Td, Deci)
+        txtTn.Text = FormatNumber(Tn, Deci)
 
     End Sub
 
@@ -756,7 +756,6 @@ Public Class Form1
             PanelF4Results.Visible = True
             PanelF3Results.Visible = False
         End If
-
 
         If Combo4PA.SelectedItem = "NPA" Then
             PA = inpPA
@@ -795,9 +794,9 @@ Public Class Form1
 
         Dang = Ang * 180 / PI
 
-        Txt4Ang.Text = Dang
-        Txt4Sd.Text = Sd
-        Txt4Sn.Text = Sn
+        Txt4Ang.Text = FormatNumber(Dang, Deci)
+        Txt4Sd.Text = FormatNumber(Sd, Deci)
+        Txt4Sn.Text = FormatNumber(Sn, Deci)
 
     End Sub
 
