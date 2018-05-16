@@ -176,7 +176,7 @@ Partial Class Form1
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.Options, Me.Help, Me.Units})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1506, 24)
+        Me.MenuStrip2.Size = New System.Drawing.Size(558, 24)
         Me.MenuStrip2.TabIndex = 92
         Me.MenuStrip2.Text = "MenuStrip1"
         '
@@ -845,6 +845,9 @@ Partial Class Form1
         Me.CheckSpur.TabIndex = 120
         Me.CheckSpur.Text = "Spur"
         '
+        'PrintDocument1
+        '
+        '
         'PrintPreviewDialog1
         '
         Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
@@ -988,7 +991,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1506, 650)
+        Me.ClientSize = New System.Drawing.Size(558, 414)
         Me.Controls.Add(Me.PanelF4Results)
         Me.Controls.Add(Me.PanelF3Results)
         Me.Controls.Add(Me.ResultsPanel)

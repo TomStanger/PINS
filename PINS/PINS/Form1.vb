@@ -12,6 +12,7 @@ Public Class Form1
     Dim MyGraphics As Object
     Dim BlackBrush As New SolidBrush(Color.Black)
     Dim drawFont As New Font("Arial", 10)
+    Dim underlined As New Font("Arial", 16, FontStyle.Underline)
     Dim titlefont As New Font("Arial", 16)
     Dim DP, inpDP, ToothNo, Td, Tn, Sd, Sn, ThetaR, temp1, convert, Rad, Pitch, inpToothNo, DoP, inpDoP, AlphaR, PHA, inpPHA, PHAr, PA, NPA, CPA, PAr, inpASW, ASW, BCD, inpPA, ArcTTh, TranTTh, inpArcTTh, PCD, inpPCD, MPD, inpMPD, Theta, Rb, Rt, Ri, Dbase, Pang, MPD1, Doe, Beta, BetaR, H, Hr, Alpha, Twoc, Eo, Vol As Double
 
@@ -29,6 +30,8 @@ Public Class Form1
         If RadioFunc1.Checked = True Then
 
 
+            e.Graphics.DrawString("Size over Pins from Tooth Thickness", underlined, Brushes.Black, 225, 60)
+
             e.Graphics.DrawString("Pitch", drawFont, BlackBrush, 200, 200)
             e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 200)
 
@@ -42,19 +45,19 @@ Public Class Form1
             e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 275)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 300)
-            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 300)
+            e.Graphics.DrawString(FormatNumber(inpMPD * convert, Deci), drawFont, Brushes.Black, 375, 300)
 
-            e.Graphics.DrawString("Normal / Transverse Arc Thickness", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(inpArcTTh, drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString("N/T Arc Thickness", drawFont, BlackBrush, 200, 325)
+            e.Graphics.DrawString(FormatNumber(inpArcTTh * convert, Deci), drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 550)
-            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 375, 550)
+            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 425, 550)
 
             e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 600)
-            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 375, 600)
+            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 425, 600)
 
-            e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 650)
-            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 650)
+            e.Graphics.DrawString("Radius to Point of Tan", drawFont, BlackBrush, 200, 650)
+            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 425, 650)
 
             If convert = "1" Then
                 e.Graphics.DrawString("Figures are in Inches", drawFont, BlackBrush, 450, 850)
@@ -62,6 +65,7 @@ Public Class Form1
                 e.Graphics.DrawString("Figures are in Millimeters", drawFont, BlackBrush, 450, 850)
             End If
         ElseIf RadioFunc2.Checked = True Then
+            e.Graphics.DrawString("Size under Pins from Spacewidth", underlined, Brushes.Black, 225, 60)
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
             e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
 
@@ -75,21 +79,24 @@ Public Class Form1
             e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(FormatNumber(inpMPD * convert, Deci), drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Arc Spacewidth", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(inpASW, drawFont, Brushes.Black, 375, 350)
+            e.Graphics.DrawString(inpASW * convert, drawFont, Brushes.Black, 375, 350)
 
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 500)
-            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 375, 500)
+            e.Graphics.DrawString(FormatNumber(Doe, Deci), drawFont, Brushes.Black, 425, 500)
 
             e.Graphics.DrawString("PA to Point of Tangency", drawFont, BlackBrush, 200, 525)
-            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 375, 525)
+            e.Graphics.DrawString(FormatNumber(ThetaR, Deci), drawFont, Brushes.Black, 425, 525)
 
             e.Graphics.DrawString("Radius to Point of Tangency", drawFont, BlackBrush, 200, 550)
-            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 375, 550)
+            e.Graphics.DrawString(FormatNumber(Rt, Deci), drawFont, Brushes.Black, 425, 550)
         ElseIf RadioFunc3.Checked = True Then
+
+
+            e.Graphics.DrawString("Tooth Thickness from Size under Pins", underlined, Brushes.Black, 225, 60)
 
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
             e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
@@ -104,24 +111,25 @@ Public Class Form1
             e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(FormatNumber(inpMPD * convert, Deci), drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(DoP, drawFont, Brushes.Black, 375, 350)
-
+            e.Graphics.DrawString(DoP * convert, drawFont, Brushes.Black, 375, 350)
 
 
             e.Graphics.DrawString("Ang", drawFont, BlackBrush, 200, 550)
-            e.Graphics.DrawString(FormatNumber(Dang, Deci), drawFont, Brushes.Black, 375, 550)
+            e.Graphics.DrawString(FormatNumber(Dang, Deci), drawFont, Brushes.Black, 425, 550)
 
             e.Graphics.DrawString("Td", drawFont, BlackBrush, 200, 575)
-            e.Graphics.DrawString(FormatNumber(Td, Deci), drawFont, Brushes.Black, 375, 575)
+            e.Graphics.DrawString(FormatNumber(Td, Deci), drawFont, Brushes.Black, 425, 575)
 
             e.Graphics.DrawString("Tn", drawFont, BlackBrush, 200, 600)
-            e.Graphics.DrawString(FormatNumber(Tn, Deci), drawFont, Brushes.Black, 375, 600)
+            e.Graphics.DrawString(FormatNumber(Tn, Deci), drawFont, Brushes.Black, 425, 600)
 
         ElseIf RadioFunc4.Checked = True Then
 
+            e.Graphics.DrawString("Spacewidth from Size Under Pins", underlined, Brushes.Black, 225, 60)
+
             e.Graphics.DrawString("DP/Mod", drawFont, BlackBrush, 200, 225)
             e.Graphics.DrawString(inpDP, drawFont, Brushes.Black, 375, 225)
 
@@ -135,21 +143,21 @@ Public Class Form1
             e.Graphics.DrawString(inpToothNo, drawFont, Brushes.Black, 375, 300)
 
             e.Graphics.DrawString("Measuring Pin Diameter", drawFont, BlackBrush, 200, 325)
-            e.Graphics.DrawString(inpMPD, drawFont, Brushes.Black, 375, 325)
+            e.Graphics.DrawString(FormatNumber(inpMPD * convert, Deci), drawFont, Brushes.Black, 375, 325)
 
             e.Graphics.DrawString("Dimension over Pins", drawFont, BlackBrush, 200, 350)
-            e.Graphics.DrawString(DoP, drawFont, Brushes.Black, 375, 350)
+            e.Graphics.DrawString(FormatNumber(DoP * convert, Deci), drawFont, Brushes.Black, 375, 350)
 
 
 
             e.Graphics.DrawString("Ang", drawFont, BlackBrush, 200, 550)
-            e.Graphics.DrawString(FormatNumber(Dang, Deci), drawFont, Brushes.Black, 375, 550)
+            e.Graphics.DrawString(FormatNumber(Dang, Deci), drawFont, Brushes.Black, 425, 550)
 
             e.Graphics.DrawString("Sd", drawFont, BlackBrush, 200, 575)
-            e.Graphics.DrawString(FormatNumber(Sd, Deci), drawFont, Brushes.Black, 375, 575)
+            e.Graphics.DrawString(FormatNumber(Sd, Deci), drawFont, Brushes.Black, 425, 575)
 
             e.Graphics.DrawString("Sn", drawFont, BlackBrush, 200, 600)
-            e.Graphics.DrawString(FormatNumber(Sn, Deci), drawFont, Brushes.Black, 375, 600)
+            e.Graphics.DrawString(FormatNumber(Sn, Deci), drawFont, Brushes.Black, 425, 600)
 
         End If
 
@@ -424,10 +432,6 @@ Public Class Form1
         Txt2MPD.Text = ""
         Txt3MPD.Text = ""
         Txt4MPD.Text = ""
-
-
-
-
     End Sub
 
     Private Sub RadioFunc2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioFunc2.CheckedChanged
